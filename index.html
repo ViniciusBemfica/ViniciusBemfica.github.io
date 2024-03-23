@@ -17,7 +17,7 @@
         flex: 1;
         text-align: left;
         position: relative;
-        
+       
     }
     .section img {
         width: 95%;
@@ -121,17 +121,21 @@
     <div>(10<span class="red">&#9829;</span> J<span class="red">&#9829;</span> Q<span class="red">&#9829;</span> K<span class="red">&#9829;</span> A<span class="red">&#9829;</span>)</label><br>
     </div>
 
+    
+    <br><br><br>
+    <button onclick="NovosCoringas()">Novos Coringas</button>
+    
 </div>
 
     <div class="section">
         <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
         <br>
-        <button onclick="selecionarImagem2('imagem2')">2</button>
+        <button onclick="selecionarImagem2('imagem2')">1</button>
     </div>
     <div class="section">
         <img id="imagem3" src="placeholder.jpg" alt="Imagem 3" class="visible">
         <br>
-        <button onclick="selecionarImagem3('imagem3')">3</button>
+        <button onclick="selecionarImagem2('imagem3')">2</button>
     </div>
     <div class="calculator-section">
         <div class="button-row">
@@ -272,6 +276,36 @@ function selecionarImagem3(idImagem) {
         reader.readAsDataURL(file);
     });
     input.click();
+}
+
+function getRandomIndex(indices) {
+    const randomIndex = Math.floor(Math.random() * indices.length);
+    return indices.splice(randomIndex, 1)[0];
+}
+
+function NovosCoringas() {
+    // Pasta onde as imagens estão localizadas
+    const pasta = "C:\\Users\\Administrator\\Desktop\\Balatro\\Cartas";
+
+    // Número total de imagens disponíveis na pasta
+    const totalImagens = 3;
+
+    // Lista de índices de imagens disponíveis
+    let indicesDisponiveis = Array.from({ length: totalImagens }, (_, i) => i + 1);
+
+    // Gerar dois números aleatórios entre 1 e o total de imagens
+    const random1 = getRandomIndex(indicesDisponiveis);
+    const random2 = getRandomIndex(indicesDisponiveis);
+
+    // Criar o caminho para as imagens aleatórias
+    const caminhoImagem1 = `${pasta}\\${random1}.jpg`;
+    const caminhoImagem2 = `${pasta}\\${random2}.jpg`;
+
+    
+    // Atualizar as imagens no HTML
+    document.getElementById('imagem2').src = caminhoImagem1;
+    document.getElementById('imagem3').src = caminhoImagem2;
+    
 }
 </script>
 
