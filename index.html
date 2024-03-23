@@ -130,12 +130,7 @@
     
 
     <br><br><br>
-   
-    <input type="file" id="selecionarPastaInput" webkitdirectory directory multiple style="display:none;">
-    <div class="button-container">
-        <button onclick="selecionarPasta()">Selecionar Pasta de Imagens</button>
-        
-    </div>
+    <button onclick="selecionarPasta()">Novos Coringas</button>
     
 </div>
 
@@ -144,7 +139,6 @@
         <img id="imagem1" src="placeholder.jpg" alt="Imagem 1" class="visible">
         <br>
         <button onclick="selecionarImagem2('imagem1')">1</button>
-        <button onclick="carregarImagens()">Carregar Imagens Aleatórias</button>
     </div>
     <div class="section">
         <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
@@ -286,19 +280,7 @@ function getRandomIndex(indices) {
 }
 
 function selecionarPasta() {
-    const input = document.getElementById("selecionarPastaInput");
-    input.addEventListener("change", function() {
-        pasta = input.files[0].webkitRelativePath.split('/')[0];
-        console.log("Pasta selecionada:", pasta);
-    });
-    input.click();
-}
-
-function carregarImagens() {
-    if (!pasta) {
-        alert("Por favor, selecione uma pasta de imagens.");
-        return;
-    }
+    pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
     const totalImagens = 3;
@@ -310,11 +292,9 @@ function carregarImagens() {
     const random1 = getRandomIndex(indicesDisponiveis);
     const random2 = getRandomIndex(indicesDisponiveis);
 
-    pasta= 'C:\\Users\\Administrator\\Desktop\\Balatro\\Cartas'
-
     // Criar o caminho para as imagens aleatórias
-    const caminhoImagem1 = `${pasta}\\${random1}.jpg`;
-    const caminhoImagem2 = `${pasta}\\${random2}.jpg`;
+    const caminhoImagem1 = `${pasta}//${random1}.jpg`;
+    const caminhoImagem2 = `${pasta}//${random2}.jpg`;
 
     // Atualizar as imagens no HTML
     document.getElementById('imagem1').src = caminhoImagem1;
