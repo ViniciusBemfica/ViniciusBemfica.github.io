@@ -74,6 +74,12 @@
     .pokerHand {
         font-size: 13px; 
     }
+    .button-container {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
 </style>
 </head>
 <body>
@@ -122,20 +128,28 @@
     </div>
 
     
+
     <br><br><br>
-    <button onclick="NovosCoringas()">Novos Coringas</button>
+   
+    <input type="file" id="selecionarPastaInput" webkitdirectory directory multiple style="display:none;">
+    <div class="button-container">
+        <button onclick="selecionarPasta()">Selecionar Pasta de Imagens</button>
+        
+    </div>
     
 </div>
 
     <div class="section">
-        <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
+
+        <img id="imagem1" src="placeholder.jpg" alt="Imagem 1" class="visible">
         <br>
-        <button onclick="selecionarImagem2('imagem2')">1</button>
+        <button onclick="selecionarImagem2('imagem1')">1</button>
+        <button onclick="carregarImagens()">Carregar Imagens Aleatórias</button>
     </div>
     <div class="section">
-        <img id="imagem3" src="placeholder.jpg" alt="Imagem 3" class="visible">
+        <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
         <br>
-        <button onclick="selecionarImagem2('imagem3')">2</button>
+        <button onclick="selecionarImagem3('imagem2')">2</button>
     </div>
     <div class="calculator-section">
         <div class="button-row">
@@ -171,7 +185,6 @@
     </div>
 </div>
 
-<input type="file" id="selecionarImagemInput" class="hidden" accept="image/*" color="blue">
 
 <input type="file" id="selecionarImagemInput2" class="hidden" accept="image/*">
 
@@ -179,7 +192,8 @@
 
 <script>
 var total = 0;
-var jogador1 =true
+var jogador1 =true;
+let pasta = '';
 
 function setJogador(pJog){
    jogador1 = pJog    
@@ -239,18 +253,6 @@ function cancelar() {
     document.getElementById("valorEntrada").value = 0;
 }
 
-function selecionarImagem(idImagem) {
-    var input = document.getElementById("selecionarImagemInput");
-    input.addEventListener("change", function() {
-        var file = input.files[0];
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById(idImagem).src = e.target.result;
-        }
-        reader.readAsDataURL(file);
-    });
-    input.click();
-}
 
 function selecionarImagem2(idImagem) {
     var input = document.getElementById("selecionarImagemInput2");
@@ -283,9 +285,20 @@ function getRandomIndex(indices) {
     return indices.splice(randomIndex, 1)[0];
 }
 
-function NovosCoringas() {
-    // Pasta onde as imagens estão localizadas
-    const pasta = "C:\\Users\\Administrator\\Desktop\\Balatro\\Cartas";
+function selecionarPasta() {
+    const input = document.getElementById("selecionarPastaInput");
+    input.addEventListener("change", function() {
+        pasta = input.files[0].webkitRelativePath.split('/')[0];
+        console.log("Pasta selecionada:", pasta);
+    });
+    input.click();
+}
+
+function carregarImagens() {
+    if (!pasta) {
+        alert("Por favor, selecione uma pasta de imagens.");
+        return;
+    }
 
     // Número total de imagens disponíveis na pasta
     const totalImagens = 3;
@@ -297,15 +310,15 @@ function NovosCoringas() {
     const random1 = getRandomIndex(indicesDisponiveis);
     const random2 = getRandomIndex(indicesDisponiveis);
 
+    pasta= 'C:\\Users\\Administrator\\Desktop\\Balatro\\Cartas'
+
     // Criar o caminho para as imagens aleatórias
     const caminhoImagem1 = `${pasta}\\${random1}.jpg`;
     const caminhoImagem2 = `${pasta}\\${random2}.jpg`;
 
-    
     // Atualizar as imagens no HTML
-    document.getElementById('imagem2').src = caminhoImagem1;
-    document.getElementById('imagem3').src = caminhoImagem2;
-    
+    document.getElementById('imagem1').src = caminhoImagem1;
+    document.getElementById('imagem2').src = caminhoImagem2;
 }
 </script>
 
