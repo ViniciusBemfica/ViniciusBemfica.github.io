@@ -137,12 +137,12 @@
 
     <div class="section">
 
-        <img id="imagem1" src="placeholder.jpg" alt="Imagem 1" class="visible">
+        <img id="imagem1" ondblclick="infoCarta(pIdCarta1)" src="placeholder.jpg" alt="Imagem 1" class="visible">
         <br>
         <button onclick="selecionarImagem2('imagem1')">1</button>
     </div>
     <div class="section">
-        <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
+        <img id="imagem2" ondblclick="infoCarta(pIdCarta2)" src="placeholder.jpg" alt="Imagem 2" class="visible">
         <br>
         <button onclick="selecionarImagem3('imagem2')">2</button>
     </div>
@@ -189,6 +189,8 @@
 var total = 0;
 var jogador1 =true;
 let pasta = '';
+var pIdCarta1;
+var pIdCarta2;
 
 function setJogador(pJog){
    jogador1 = pJog    
@@ -293,13 +295,57 @@ function selecionarPasta() {
     const random1 = getRandomIndex(indicesDisponiveis);
     const random2 = getRandomIndex(indicesDisponiveis);
 
+    pIdCarta1 = random1;
+    pIdCarta2 = random2;
+
     // Criar o caminho para as imagens aleatórias
-    const caminhoImagem1 = `${pasta}//${random1}.jpg`;
-    const caminhoImagem2 = `${pasta}//${random2}.jpg`;
+    const caminhoImagem1 = `${pasta}${random1}.jpg`;
+    const caminhoImagem2 = `${pasta}${random2}.jpg`;
 
     // Atualizar as imagens no HTML
     document.getElementById('imagem1').src = caminhoImagem1;
     document.getElementById('imagem2').src = caminhoImagem2;
+}
+
+function infoCarta(pIdCarta){
+    switch (pIdCarta) {
+        case 1:
+            alert("1 - Ouro +2 ");
+            break;
+        case 2:
+            alert("2 - quando 0 descartes, x2");
+            break;
+        case 3:
+            alert("3 - A +5");
+            break;
+        case 4:
+            alert("4 - Face +2");
+            break;
+        case 5:
+            alert("5 - Straight e straight flush x2");
+            break;
+        case 6:
+            alert("6 - Cada Par +3");
+            break;
+        case 7:
+            alert("7 - Carta Impar +2");
+            break;
+        case 8:
+            alert("8 - Carta par +2");
+            break;
+        case 9:
+            alert("9 - Straight e straight flush com 4 cartas");
+            break;
+        case 10:
+            alert("10 - Jogar 4 cartas x2");
+            break;
+        case 11:
+            alert("11 - Score com 4 naipes diferentes x2");
+            break;
+        case 12:
+            alert("12 - Tudo vermelho é ouro");   
+            break;
+    }  
 }
 </script>
 
