@@ -1,7 +1,254 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout com Imagens e Calculadora</title>
+<style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 5px;
+    }
+    .section {
+        flex: 1;
+        text-align: left;
+        position: relative;
+        
+    }
+    .section img {
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        
+    }
+    .section img.visible {
+        display: block;
+    }
+    .section button {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .calculator-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input {
+        margin: 5px;
+        padding: 5px;
+        width: 70px;
+    }
+    .button-row {
+        display: flex;
+    }
+    .button-row button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+        width: 50px;
+    }
+   .button-row button.botaoLargo{
+       margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+        width: 100px;
+        
+   }
+    .hidden {
+        display: none;
+    }
+    .card-icon {
+      font-size: 24px;
+      color: black; /* cor padrão para paus e espadas */
+    }
+    .red {
+      color: red; /* cor para ouros e copas */
+    }
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<div class="container">
+    <div class="section">
+
+    <label for="carta-alta">+ 1 - Carta Alta (A<span class="red">&#9830;</span> K<span class="red">&#9829;</span> 10<span class="red">&#9830;</span> 7<span class="red">&#9829;</span> 4<span class="card-icon">&#9827;</span>)</label><br>
+    
+    <label for="par">+ 2 - Par (8<span class="red">&#9829;</span> 8<span class="red">&#9830;</span> J<span class="card-icon">&#9827;</span> 9<span class="red">&#9829;</span> 3<span class="red">&#9830;</span>)</label><br>
+
+    <label for="dois-pares">+ 3 - Dois Pares (K<span class="red">&#9829;</span> K<span class="red">&#9830;</span> 5<span class="red">&#9827;</span> 5<span class="red">&#9829;</span> J<span class="card-icon">&#9830;</span>)</label><br>
+
+    <label for="trinca">+ 4 - Trinca (7<span class="red">&#9829;</span> 7<span class="red">&#9830;</span> 7<span class="red">&#9827;</span> 10<span class="card-icon">&#9830;</span> 2<span class="card-icon">&#9827;</span>)</label><br>
+
+    <label for="sequencia">+ 5 - Sequência (4<span class="red">&#9829;</span> 5<span class="red">&#9830;</span> 6<span class="red">&#9829;</span> 7<span class="red">&#9827;</span> 8<span class="card-icon">&#9827;</span>)</label><br>
+
+    <label for="flush">+ 6 - Flush (A<span class="red">&#9829;</span> K<span class="red">&#9829;</span> 10<span class="red">&#9829;</span> 7<span class="red">&#9829;</span> 4<span class="red">&#9829;</span>)</label><br>
+
+    <label for="full-house">+ 7 - Full House (A<span class="red">&#9829;</span> A<span class="red">&#9830;</span> A<span class="red">&#9827;</span> 5<span class="card-icon">&#9827;</span> 5<span class="card-icon">&#9830;</span>)</label><br>
+
+    <label for="quadra">+ 8 - Quadra (Q<span class="red">&#9829;</span> Q<span class="red">&#9830;</span> Q<span class="red">&#9827;</span> Q<span class="red">&#9829;</span> 9<span class="card-icon">&#9827;</span>)</label><br>
+
+    <label for="straight-flush">+ 9 - Straight Flush (5<span class="red">&#9829;</span> 6<span class="red">&#9829;</span> 7<span class="red">&#9829;</span> 8<span class="red">&#9829;</span> 9<span class="red">&#9829;</span>)</label><br>
+
+    <label for="royal-straight-flush">+ 10 - Royal St. Flush (10<span class="red">&#9829;</span> J<span class="red">&#9829;</span> Q<span class="red">&#9829;</span> K<span class="red">&#9829;</span> A<span class="red">&#9829;</span>)</label><br>
+
+    </div>
+    <div class="section">
+        <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible">
+        <br>
+        <button onclick="selecionarImagem2('imagem2')">2</button>
+    </div>
+    <div class="section">
+        <img id="imagem3" src="placeholder.jpg" alt="Imagem 3" class="visible">
+        <br>
+        <button onclick="selecionarImagem3('imagem3')">3</button>
+    </div>
+    <div class="calculator-section">
+        <div class="button-row">
+            <button onclick="adicionarNumero(1)">1</button>
+            <button onclick="adicionarNumero(2)">2</button>
+            <button onclick="adicionarNumero(3)">3</button>
+            
+        </div>
+        <div class="button-row">
+            <button onclick="adicionarNumero(4)">4</button>
+            <button onclick="adicionarNumero(5)">5</button>
+            <button onclick="adicionarNumero(6)">6</button>
+        </div>
+        <div class="button-row">
+            
+            <button onclick="adicionarNumero(7)">7</button>
+            <button onclick="adicionarNumero(8)">8</button>
+            <button onclick="adicionarNumero(9)">9</button>            
+        </div>
+        <div class="button-row">
+        <button  onclick="adicionarNumero(0)">0</button>
+        
+            <button class="botaoLargo" onclick="adicionar()">+</button>
+        </div>
+        <div class="button-row">
+        <input onclick="setJogador(true)" ondblclick="excluir2()" readonly type="text" id="valorEntrada" placeholder="Jogador 1">
+        <input onclick="setJogador(false)" ondblclick="excluir2()" readonly type="text" id="valorEntrada2" placeholder="Jogador 2">
+        </div>
+        <div class="button-row">
+        <input type="text" id="valorSoma" readonly ondblclick="excluir()" onclick="setJogador(true)" value=0 placeholder="Valor da soma até agora" readonly>
+        <input type="text" id="valorSoma2" readonly ondblclick="excluir()" onclick="setJogador(false)" value=0 placeholder="Total Jogador 2" readonly>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="selecionarImagemInput" class="hidden" accept="image/*" color="blue">
+
+<input type="file" id="selecionarImagemInput2" class="hidden" accept="image/*">
+
+<input type="file" id="selecionarImagemInput3" class="hidden" accept="image/*">
+
+<script>
+var total = 0;
+var jogador1 =true
+
+function setJogador(pJog){
+   jogador1 = pJog    
+}
+
+function adicionarNumero(numero) {
+    if(jogador1) {
+     document.getElementById("valorEntrada").value += numero;
+    } else {
+    document.getElementById("valorEntrada2").value += numero;
+    }
+}
+
+
+function excluir (){
+  if(jogador1) {
+    document.getElementById("valorSoma").value = 0;
+   } else {
+       document.getElementById("valorSoma2").value = 0;
+   }
+}
+
+function excluir2 (){
+   if (jogador1) {
+      document.getElementById("valorEntrada").value = ""; 
+   } else {
+    document.getElementById("valorEntrada2").value = "";
+    }
+}
+
+function adicionar() {
+    if (jogador1){
+        var entrada = parseFloat(document.getElementById("valorEntrada").value);
+    } else {
+        var entrada = parseFloat(document.getElementById("valorEntrada2").value);
+    }
+    
+    if (!isNaN(entrada)) {
+     if(jogador1){
+         total = parseFloat(document.getElementById("valorSoma").value);
+      total = total + entrada;
+        document.getElementById("valorSoma").value = total;
+     } else {
+         total = parseFloat(document.getElementById("valorSoma2").value);
+      total = total + entrada;
+        document.getElementById("valorSoma2").value = total;
+     }
+       
+        document.getElementById("valorEntrada").value = "";
+        document.getElementById("valorEntrada2").value = "";
+    } else {
+        alert("Por favor, digite um número válido.");
+    }
+}
+
+function cancelar() {
+    document.getElementById("valorEntrada").value = 0;
+}
+
+function selecionarImagem(idImagem) {
+    var input = document.getElementById("selecionarImagemInput");
+    input.addEventListener("change", function() {
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(idImagem).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    });
+    input.click();
+}
+
+function selecionarImagem2(idImagem) {
+    var input = document.getElementById("selecionarImagemInput2");
+    input.addEventListener("change", function() {
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(idImagem).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    });
+    input.click();
+}
+
+function selecionarImagem3(idImagem) {
+    var input = document.getElementById("selecionarImagemInput3");
+    input.addEventListener("change", function() {
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById(idImagem).src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    });
+    input.click();
+}
+</script>
+
 </body>
 </html>
