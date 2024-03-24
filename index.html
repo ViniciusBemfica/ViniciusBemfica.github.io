@@ -81,6 +81,30 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
+    #contadorSpan {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: rgba(130, 255, 147, 0.7);
+        color: rgba(255, 0, 0, 0.7);
+        padding: 5px 5px;
+        border-radius: 50%;
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .contadorSpan {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background-color: rgba(130, 255, 147, 0.7);
+        color: rgba(255, 0, 0, 0.7);
+        padding: 5px 5px;
+        border-radius: 50%;
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -88,47 +112,56 @@
 <div class="container">
     <div class="section">
 
-    <label class="pokerHand" for="carta-alta">+ 1 - CARTA ALTA
-    <div>(A<span class="red">&#9830;</span> K<span class="red">&#9829;</span> 10<span class="red">&#9830;</span> 7<span class="red">&#9829;</span> 4<span class="card-icon">&#9827;</span>)</label><br>
-    </div>
-
-    <label class="pokerHand" for="par">+ 2 - PAR
-    <div>(8<span class="red">&#9829;</span> 8<span class="red">&#9830;</span> J<span class="card-icon">&#9827;</span> 9<span class="red">&#9829;</span> 3<span class="red">&#9830;</span>)</label><br>
-    </div>  
-
-    <label class="pokerHand" for="dois-pares">+ 3 - DOIS PARES 
-    <div>(K<span class="red">&#9829;</span> K<span class="red">&#9830;</span> 5<span class="red">&#9827;</span> 5<span class="red">&#9829;</span> J<span class="card-icon">&#9830;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="trinca">+ 4 - TRINCA 
-    <div>(7<span class="red">&#9829;</span> 7<span class="red">&#9830;</span> 7<span class="red">&#9827;</span> 10<span class="card-icon">&#9830;</span> 2<span class="card-icon">&#9827;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="sequencia">+ 5 - SEQUÊNCIA 
-    <div>(4<span class="red">&#9829;</span> 5<span class="red">&#9830;</span> 6<span class="red">&#9829;</span> 7<span class="red">&#9827;</span> 8<span class="card-icon">&#9827;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="flush">+ 6 - FLUSH 
-    <div>(A<span class="red">&#9829;</span> K<span class="red">&#9829;</span> 10<span class="red">&#9829;</span> 7<span class="red">&#9829;</span> 4<span class="red">&#9829;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="full-house">+ 7 - FULL HOUSE
-    <div>(A<span class="red">&#9829;</span> A<span class="red">&#9830;</span> A<span class="red">&#9827;</span> 5<span class="card-icon">&#9827;</span> 5<span class="card-icon">&#9830;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="quadra">+ 8 - QUADRA 
-    <div>(Q<span class="red">&#9829;</span> Q<span class="red">&#9830;</span> Q<span class="red">&#9827;</span> Q<span class="red">&#9829;</span> 9<span class="card-icon">&#9827;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="straight-flush">+ 9 - STRAIGHT FLUSH
-    <div>(5<span class="red">&#9829;</span> 6<span class="red">&#9829;</span> 7<span class="red">&#9829;</span> 8<span class="red">&#9829;</span> 9<span class="red">&#9829;</span>)</label><br>
-    </div> 
-
-    <label class="pokerHand" for="royal-straight-flush">+ 10 - ROYAL ST. FLUSH 
-    <div>(10<span class="red">&#9829;</span> J<span class="red">&#9829;</span> Q<span class="red">&#9829;</span> K<span class="red">&#9829;</span> A<span class="red">&#9829;</span>)</label><br>
-    </div>
-
-    
+        <label class="pokerHand" for="carta-alta">
+            <input type="radio" id="carta-alta" name="hand" value="1"> + 1 - CARTA ALTA
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="par">
+            <input type="radio" id="par" name="hand" value="2"> + 2 - PAR
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="dois-pares">
+            <input type="radio" id="dois-pares" name="hand" value="3"> + 3 - DOIS PARES 
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="trinca">
+            <input type="radio" id="trinca" name="hand" value="4"> + 4 - TRINCA 
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="sequencia">
+            <input type="radio" id="sequencia" name="hand" value="5"> + 5 - SEQUÊNCIA 
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="flush">
+            <input type="radio" id="flush" name="hand" value="6"> + 6 - FLUSH 
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="full-house">
+            <input type="radio" id="full-house" name="hand" value="7"> + 7 - FULL HOUSE
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="quadra">
+            <input type="radio" id="quadra" name="hand" value="8"> + 8 - QUADRA 
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="straight-flush">
+            <input type="radio" id="straight-flush" name="hand" value="9"> + 9 - STRAIGHT FLUSH
+            <br>
+        </label>
+        
+        <label class="pokerHand" for="royal-straight-flush">
+            <input type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL ST. FLUSH 
+            <br>
+        </label>
+        
 
     <br><br><br>
     <button onclick="selecionarPasta()">Novos Coringas</button>
@@ -136,13 +169,14 @@
 </div>
 
     <div class="section">
-
-        <img id="imagem1" ondblclick="infoCarta(pIdCarta1)" src="placeholder.jpg" alt="Imagem 1" class="visible">
+        <img id="imagem1" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 1" class="visible">
+        <span class="contadorSpan" id = "contadorSpan1">0</span>
         <br>
         <button onclick="selecionarImagem2('imagem1')">1</button>
     </div>
     <div class="section">
-        <img id="imagem2" ondblclick="infoCarta(pIdCarta2)" src="placeholder.jpg" alt="Imagem 2" class="visible">
+        <img id="imagem2" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 2" class="visible">
+        <span class="contadorSpan" id = "contadorSpan2">0</span>
         <br>
         <button onclick="selecionarImagem3('imagem2')">2</button>
     </div>
@@ -189,14 +223,141 @@
 var total = 0;
 var jogador1 =true;
 let pasta = '';
-var pIdCarta1;
-var pIdCarta2;
+var pIdCoringa1;
+var pIdCoringa2;
+
+let arrayOfCoringa = [
+    {
+        Id: 0,
+        Descricao: "Dummy",
+        EhMult: false,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 1,
+        Descricao: "1 - Ouro +2",
+        EhMult: false,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 2,
+        Descricao: "2 - quando 0 descartes, x2",
+        EhMult: true,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 3,
+        Descricao: "3 - A +5",
+        EhMult: false,
+        ValorBase: 5,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 4,
+        Descricao: "4 - Face +2",
+        EhMult: false,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 5,
+        Descricao: "5 - Straight e straight flush x2",
+        EhMult: true,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 6,
+        Descricao: "6 - Cada Par +3",
+        EhMult: false,
+        ValorBase: 3,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 7,
+        Descricao: "7 - Carta Impar +2",
+        EhMult: false,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 8,
+        Descricao: "8 - Carta par +2",
+        EhMult: false,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 9,
+        Descricao: "9 - Straight e straight flush com 4 cartas",
+        EhMult: false,
+        ValorBase: 0,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 10,
+        Descricao: "10 - Jogar 4 cartas x2",
+        EhMult: true,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 11,
+        Descricao: "11 - Score com 4 naipes diferentes x2",
+        EhMult: true,
+        ValorBase: 2,
+        QtdAtivacoes: 0
+    },
+    {
+        Id: 12,
+        Descricao: "12 - Tudo vermelho é ouro",
+        EhMult: false,
+        ValorBase: 0,
+        QtdAtivacoes: 0
+    }
+];
+
+function atualizaContador(pImagem){
+    contadorSpan1 = document.getElementById('contadorSpan1');
+    contadorSpan2 = document.getElementById('contadorSpan2');
+
+    contadorSpan1.textContent = arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
+    contadorSpan2.textContent = arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+}
+
+function addPontos(pImagem) {
+    arrayOfCoringa[pImagem.value].QtdAtivacoes++; 
+    
+    pImagem.style.border = "4px solid red";
+
+    atualizaContador(pImagem);
+
+    CalculaPontuacao(); 
+}
+
+function CalculaPontuacao(){
+    totalCalculo = parseFloat(document.querySelector('input[name="hand"]:checked').value);
+    
+    if (arrayOfCoringa[pIdCoringa1].EhMult == false){
+        totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
+    } 
+
+    if (arrayOfCoringa[pIdCoringa2].EhMult == false){
+        totalCalculo += arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+    } 
+
+    document.getElementById("valorEntrada").value = totalCalculo;    
+}
 
 function setJogador(pJog){
    jogador1 = pJog    
 }
 
 function adicionarNumero(numero) {
+    
     if(jogador1) {
      document.getElementById("valorEntrada").value += numero;
     } else {
@@ -206,6 +367,8 @@ function adicionarNumero(numero) {
 
 
 function excluir (){
+    ResetaCoringas();
+
   if(jogador1) {
     document.getElementById("valorSoma").value = 0;
    } else {
@@ -214,11 +377,23 @@ function excluir (){
 }
 
 function excluir2 (){
+    ResetaCoringas();
+    
    if (jogador1) {
       document.getElementById("valorEntrada").value = ""; 
+      
    } else {
-    document.getElementById("valorEntrada2").value = "";
-    }
+        document.getElementById("valorEntrada2").value = "";
+   }
+}
+
+function ResetaCoringas(){
+    document.getElementById("imagem1").style.border = ""; 
+    document.getElementById("imagem2").style.border = ""; 
+    arrayOfCoringa[pIdCoringa1].QtdAtivacoes = 0;
+    arrayOfCoringa[pIdCoringa2].QtdAtivacoes = 0;
+    contadorSpan1.textContent = 0;
+    contadorSpan2.textContent = 0;
 }
 
 function adicionar() {
@@ -241,6 +416,8 @@ function adicionar() {
        
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
+
+        ResetaCoringas();
     } else {
         alert("Por favor, digite um número válido.");
     }
@@ -295,8 +472,8 @@ function selecionarPasta() {
     const random1 = getRandomIndex(indicesDisponiveis);
     const random2 = getRandomIndex(indicesDisponiveis);
 
-    pIdCarta1 = random1;
-    pIdCarta2 = random2;
+    pIdCoringa1 = random1;
+    pIdCoringa2 = random2;
 
     // Criar o caminho para as imagens aleatórias
     const caminhoImagem1 = `${pasta}${random1}.jpg`;
@@ -305,47 +482,13 @@ function selecionarPasta() {
     // Atualizar as imagens no HTML
     document.getElementById('imagem1').src = caminhoImagem1;
     document.getElementById('imagem2').src = caminhoImagem2;
+
+    document.getElementById("imagem1").value = pIdCoringa1;
+    document.getElementById("imagem2").value = pIdCoringa2;
 }
 
-function infoCarta(pIdCarta){
-    switch (pIdCarta) {
-        case 1:
-            alert("1 - Ouro +2 ");
-            break;
-        case 2:
-            alert("2 - quando 0 descartes, x2");
-            break;
-        case 3:
-            alert("3 - A +5");
-            break;
-        case 4:
-            alert("4 - Face +2");
-            break;
-        case 5:
-            alert("5 - Straight e straight flush x2");
-            break;
-        case 6:
-            alert("6 - Cada Par +3");
-            break;
-        case 7:
-            alert("7 - Carta Impar +2");
-            break;
-        case 8:
-            alert("8 - Carta par +2");
-            break;
-        case 9:
-            alert("9 - Straight e straight flush com 4 cartas");
-            break;
-        case 10:
-            alert("10 - Jogar 4 cartas x2");
-            break;
-        case 11:
-            alert("11 - Score com 4 naipes diferentes x2");
-            break;
-        case 12:
-            alert("12 - Tudo vermelho é ouro");   
-            break;
-    }  
+function infoCarta(pImagem){
+    alert(arrayOfCoringa[pImagem.value].Descricao);
 }
 </script>
 
