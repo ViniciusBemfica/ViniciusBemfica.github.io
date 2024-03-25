@@ -73,7 +73,7 @@
     <!-------- Pontos ---------->
     <div class="calculator-section">
         <div class="button-row">
-            <button class="botaoLargo" onclick="selecionarPasta()">🎲 🃏</button>             
+            <button class="botaoLargo" onclick="SortCoringas()">🎲 🃏</button>             
         </div>
         <br>
         <div class="button-row">
@@ -110,13 +110,6 @@ var pIdCoringa2;
 var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
 var vPontuacaoLogJ1 = ""; 
 var vPontuacaoLogJ2 = "";
-
-//Atualiza Pontuação ao clicar nos PokerHands
-radios.forEach(function(radio) {
-    radio.onclick = function() {
-        CalculaPontuacao();
-    };
-});
 
 //Coringas
 let arrayOfCoringa = [
@@ -212,6 +205,18 @@ let arrayOfCoringa = [
         QtdAtivacoes: 0
     }
 ];
+
+// ----- Executam sempre ao abrir tela -----
+//Atualiza Pontuação ao clicar nos PokerHands
+radios.forEach(function(radio) {
+    radio.onclick = function() {
+        CalculaPontuacao();
+    };
+});
+
+setJogador(1);
+
+SortCoringas();
 
 </script>
 

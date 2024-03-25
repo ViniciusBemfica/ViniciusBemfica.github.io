@@ -193,7 +193,7 @@ function atualizaIndicadorMult(){
     indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase;
 }
 
-function selecionarPasta() {
+function SortCoringas() {
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
