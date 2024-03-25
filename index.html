@@ -93,11 +93,6 @@
             <!--<button class="botaoCookie" onclick="ExibeCookie()">cookie read</button>  -->       
         <!--</div>-->
     </div>
-
-    <button onclick="openFullscreen()">Abrir tela cheia</button>
-    <div id="fullscreenElement">
-        <!-- Conteúdo da tela cheia -->
-    </div>
 </div>
 
 
@@ -210,20 +205,17 @@ let arrayOfCoringa = [
     }
 ];
 
-// ----- Executam sempre ao abrir tela -----
-//Atualiza Pontuação ao clicar nos PokerHands
-radios.forEach(function(radio) {
-    radio.onclick = function() {
-        CalculaPontuacao();
-    };
-});
+window.onload = function() {
+    radios.forEach(function(radio) {
+        radio.onclick = function() {
+            CalculaPontuacao();
+        };
+    });
 
-setJogador(1);
+    setJogador(1);
 
-SortCoringas();
-
-// Chamando a função ao carregar a página (opcional)
-window.onload = openFullscreen; 
+    SortCoringas();
+};
 
 function atualizaContador(pImagem){
     contadorSpan1 = document.getElementById('contadorSpan1');
@@ -448,6 +440,8 @@ function SortCoringas() {
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador();
+
+    openFullscreen();
 }
 
 function infoCarta(pIdCoringa){
@@ -507,7 +501,7 @@ function PintaEditJogadorSelcionado(pJogador){
     }  
 }
 
-function openFullscreen() {
+function openFullscreen() {  
     var elem = document.documentElement;
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
@@ -517,7 +511,7 @@ function openFullscreen() {
         elem.webkitRequestFullscreen();
     } else if (elem.msRequestFullscreen) { /* IE/Edge */
         elem.msRequestFullscreen();
-    }
+    }   
 }
 
      
