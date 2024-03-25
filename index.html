@@ -65,8 +65,13 @@
        margin: 5px;
         padding: 10px;
         font-size: 16px;
-        width: 100px;
-        
+        width: 100px;       
+   }
+   .button-row button.botaoCookie{
+        margin: 5px;
+        padding: 5px;
+        font-size: 16px;
+        width: 100px;       
    }
     .hidden {
         display: none;
@@ -196,9 +201,7 @@
     </div>
     <div class="calculator-section">
         <div class="button-row">
-            <button class="botaoLargo" onclick="adicionar()">+</button>
-            <!--<button class="botaoLargo" onclick="AtualizaCookie()">cookie add</button>-->
-            <!--<button class="botaoLargo" onclick="ExibeCookie()">cookie read</button>  -->          
+            <button class="botaoLargo" onclick="adicionar()">+</button>       
         </div>
         <div class="button-row">
         <input onclick="setJogador(true)" ondblclick="excluir2()" readonly type="text" id="valorEntrada" placeholder="Jogador 1">
@@ -210,7 +213,11 @@
         </div>
         <br>
         <div class="button-row">
-            <button class="botaoLargo" onclick="selecionarPasta()">Novos Coringas</button>
+            <button class="botaoLargo" onclick="selecionarPasta()">Coringas</button>
+        </div>
+        <div class="button-row">
+            <button class="botaoCookie" onclick="AtualizaCookie()">cookie add</button>
+            <button class="botaoCookie" onclick="ExibeCookie()">cookie read</button>         
         </div>
         <br>
     </div>
@@ -228,13 +235,14 @@ let pasta = '';
 var pIdCoringa1;
 var pIdCoringa2;
 var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
-var vPontuacaoLogJ1 = [];
+var vPontuacaoLogJ1 = ""; 
+var vPontuacaoLogJ2 = "";
 
 radios.forEach(function(radio) {
-        radio.onclick = function() {
-            CalculaPontuacao();
-        };
-    });
+    radio.onclick = function() {
+        CalculaPontuacao();
+    };
+});
 
 let arrayOfCoringa = [
     {
@@ -452,7 +460,7 @@ function adicionar() {
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
 
-        AdicionaNoLog(total);
+        AdicionaNoLog(jogador1, entrada);
 
         ResetaCoringas();
     } else {
@@ -550,15 +558,17 @@ function infoCarta(pImagem){
     alert(arrayOfCoringa[pImagem.value].Descricao);
 }
 
-function AtualizaCookie(vValor) {
-      let vCookieString = getCookie("CookieLog");
-      if (vCookieString != "" && vCookieString !== null) {
-        vCookieString = CookieRetornaLog(vCookieString); 
-        setCookie("CookieLog", vCookieString, 30);
-      } else {
-        setCookie("CookieLog", "", 30); 
-      }
-    } 
+function AtualizaCookie() { 
+    
+    var vCookieString = getCookie("CookieLog");   
+    
+    if (vCookieString != "" && vCookieString !== null) {     
+        vCookieString = CookieAtualizaLog(vCookieString); 
+        setCookie("CookieLog", vCookieString, 30);      
+    } else { 
+        setCookie("CookieLog", "Inicio", 30); 
+    }    
+} 
 
 function getCookie(c_name) {
     return localStorage.getItem(c_name);
@@ -568,21 +578,28 @@ function setCookie(c_name, value, expiredays) {
     return localStorage.setItem(c_name, value);
 }
 
-function CookieRetornaLog(pLogAntes){
-    vAdicionarNoLog = vPontuacaoLogJ1;
+function CookieAtualizaLog(pLogAntes){     
+    vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2;
+    vAdicionarNoLog += '\n' + 'J1|' + vPontuacaoLogJ1;
+    vAdicionarNoLog += '\n' + 'J2|' + vPontuacaoLogJ2;
     vLogNovo = pLogAntes + vAdicionarNoLog;
-    
+
     return vLogNovo;
 }
 
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
     
-    alert(vCookieString);
+    alert(vCookieString);   
 }
 
-function AdicionaNoLog(pPontuacao){
-    vPontuacaoLogJ1 += vPontuacaoLogJ1 + pPontuacao + '|'
+//usado cada vez que clica no +
+function AdicionaNoLog(pJogador1, pPontuacao){
+    if (pJogador1){
+        vPontuacaoLogJ1 += pPontuacao + '|';
+    } else {
+        vPontuacaoLogJ2 += pPontuacao + '|';   
+    }   
 }
 
 </script>
