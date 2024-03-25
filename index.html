@@ -357,13 +357,35 @@ function addPontos(pImagem) {
 function CalculaPontuacao(){
     totalCalculo = parseFloat(document.querySelector('input[name="hand"]:checked').value);
     
-    if (arrayOfCoringa[pIdCoringa1].EhMult == false){
+    //Dois coringas são de somar
+    if ((arrayOfCoringa[pIdCoringa1].EhMult == false) && (arrayOfCoringa[pIdCoringa2].EhMult == false)){
         totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-    } 
-
-    if (arrayOfCoringa[pIdCoringa2].EhMult == false){
         totalCalculo += arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
     } 
+    //Primeiro coringa é soma, segundo é mult
+    else if ((arrayOfCoringa[pIdCoringa1].EhMult == false) && (arrayOfCoringa[pIdCoringa2].EhMult == true)){
+        totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
+        if (arrayOfCoringa[pIdCoringa2].QtdAtivacoes > 0){
+            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+        }
+    }   
+    //Segunda coringa é soma, primeiro é mult
+    else if ((arrayOfCoringa[pIdCoringa2].EhMult == false) && (arrayOfCoringa[pIdCoringa1].EhMult == true)){
+        totalCalculo += arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+        if (arrayOfCoringa[pIdCoringa1].QtdAtivacoes > 0){
+            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
+        }
+    }   
+    //Dois coringas são mult
+    else if ((arrayOfCoringa[pIdCoringa2].EhMult == true) && (arrayOfCoringa[pIdCoringa1].EhMult == true)){
+        if (arrayOfCoringa[pIdCoringa1].QtdAtivacoes > 0){
+            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
+        }
+
+        if (arrayOfCoringa[pIdCoringa2].QtdAtivacoes > 0){
+            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+        }
+    }  
 
     document.getElementById("valorEntrada").value = totalCalculo;    
 }
