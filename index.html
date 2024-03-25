@@ -53,7 +53,7 @@
         margin-top: 10px;
         margin-left: 5px;
         padding: 10px;
-        width: 70px;
+        width: 65px;
     }
     .button-row {
         display: flex;
@@ -399,7 +399,12 @@ function CalculaPontuacao(){
         }
     }  
 
-    document.getElementById("valorEntrada").value = totalCalculo;    
+
+    if(jogador1) {
+        document.getElementById("valorEntrada").value = totalCalculo;
+    } else {
+        document.getElementById("valorEntrada2").value = totalCalculo;
+    }  
 }
 
 function setJogador(pJog){
@@ -463,7 +468,7 @@ function adicionar() {
             document.getElementById("valorSoma").value = total;
         } else {
             total = parseFloat(document.getElementById("valorSoma2").value);
-        total = total + entrada;
+            total = total + entrada;
             document.getElementById("valorSoma2").value = total;
         }
        
