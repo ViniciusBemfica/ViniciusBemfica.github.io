@@ -54,7 +54,7 @@ function CalculaPontuacao(){
     }  
 
 
-    if(jogador1) {
+    if(jogador1Selecionado) {
         document.getElementById("valorEntrada").value = totalCalculo;
     } else {
         document.getElementById("valorEntrada2").value = totalCalculo;
@@ -62,12 +62,14 @@ function CalculaPontuacao(){
 }
 
 function setJogador(pJog){
-   jogador1 = pJog    
+   jogador1Selecionado = pJog;
+   
+   PintaEditJogadorSelcionado(pJog);
 }
 
 function adicionarNumero(numero) {
     
-    if(jogador1) {
+    if(jogador1Selecionado) {
      document.getElementById("valorEntrada").value += numero;
     } else {
     document.getElementById("valorEntrada2").value += numero;
@@ -78,7 +80,7 @@ function adicionarNumero(numero) {
 function excluir (){
     ResetaCoringas();
 
-  if(jogador1) {
+  if(jogador1Selecionado) {
     document.getElementById("valorSoma").value = 0;
    } else {
        document.getElementById("valorSoma2").value = 0;
@@ -88,7 +90,7 @@ function excluir (){
 function excluir2 (){
     ResetaCoringas();
     
-   if (jogador1) {
+   if (jogador1Selecionado) {
       document.getElementById("valorEntrada").value = ""; 
       
    } else {
@@ -109,14 +111,14 @@ function ResetaCoringas(){
 }
 
 function adicionar() {
-    if (jogador1){
+    if (jogador1Selecionado){
         var entrada = parseFloat(document.getElementById("valorEntrada").value);
     } else {
         var entrada = parseFloat(document.getElementById("valorEntrada2").value);
     }
     
     if (!isNaN(entrada)) {
-        if(jogador1){
+        if(jogador1Selecionado){
             total = parseFloat(document.getElementById("valorSoma").value);
         total = total + entrada;
             document.getElementById("valorSoma").value = total;
@@ -129,7 +131,7 @@ function adicionar() {
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
 
-        AdicionaNoLog(jogador1, entrada);
+        AdicionaNoLog(jogador1Selecionado, entrada);
 
         ResetaCoringas();
     } else {
@@ -262,10 +264,20 @@ function ExibeCookie(){
     alert(vCookieString);   
 }
 
-function AdicionaNoLog(pJogador1, pPontuacao){
-    if (pJogador1){
+function AdicionaNoLog(pjogador1Selecionado, pPontuacao){
+    if (pjogador1Selecionado){
         vPontuacaoLogJ1 += pPontuacao + '|';
     } else {
         vPontuacaoLogJ2 += pPontuacao + '|';   
     }   
+}
+
+function PintaEditJogadorSelcionado(pJogador){
+    if (pJogador == 1){
+        document.getElementById("valorEntrada").style.border = "4px solid red";
+        document.getElementById("valorEntrada2").style.border = "";
+    } else {
+        document.getElementById("valorEntrada2").style.border = "4px solid red";
+        document.getElementById("valorEntrada").style.border = "";
+    }  
 }
