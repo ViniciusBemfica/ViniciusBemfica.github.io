@@ -11,7 +11,7 @@
         flex-direction: row;
         align-items: center;
         margin-top: 5px;
-        margin-left: -30px;
+        margin-left: -25px;
         
     }
     .section {
@@ -99,6 +99,18 @@
         font-size: 50px;
         font-weight: bold;
     }
+    .indicadorMult {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: rgba(130, 255, 147, 0.7);
+        color: rgba(255, 0, 0, 0.7);
+        padding: 5px 5px;
+        border-radius: 50%;
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        font-weight: bold;
+    }
 
 </style>
 </head>
@@ -153,7 +165,7 @@
         </label>
         
         <label class="pokerHand" for="royal-straight-flush">
-            <input type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL FLUSH 
+            <input type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL
             <br>
         </label>
         
@@ -166,12 +178,14 @@
     <div class="section">
         <img id="imagem1" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 1" class="visible">
         <span class="contadorSpan" id = "contadorSpan1">0</span>
+        <span class="indicadorMult" id = "indicadorMult1">0</span>
         <br>
         <button onclick="selecionarImagem2('imagem1')">1</button>
     </div>
     <div class="section">
         <img id="imagem2" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 2" class="visible">
         <span class="contadorSpan" id = "contadorSpan2">0</span>
+        <span class="indicadorMult" id = "indicadorMult2">0</span>
         <br>
         <button onclick="selecionarImagem3('imagem2')">2</button>
     </div>
@@ -320,7 +334,7 @@ function atualizaContador(pImagem){
     contadorSpan2 = document.getElementById('contadorSpan2');
 
     contadorSpan1.textContent = arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-    contadorSpan2.textContent = arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
+    contadorSpan2.textContent = arrayOfCoringa[pIdCoringa2].QtdAtivacoes;   
 }
 
 function addPontos(pImagem) {
@@ -388,7 +402,7 @@ function ResetaCoringas(){
     arrayOfCoringa[pIdCoringa1].QtdAtivacoes = 0;
     arrayOfCoringa[pIdCoringa2].QtdAtivacoes = 0;
     contadorSpan1.textContent = 0;
-    contadorSpan2.textContent = 0;
+    contadorSpan2.textContent = 0; 
 }
 
 function adicionar() {
@@ -454,6 +468,24 @@ function getRandomIndex(indices) {
     return indices.splice(randomIndex, 1)[0];
 }
 
+function atualizaIndicadorMult(){
+    indicadorMult1 = document.getElementById('indicadorMult1');
+    if (arrayOfCoringa[pIdCoringa1].EhMult) {
+        pOperacao = "X";
+    } else {
+        pOperacao = "+";    
+    }
+    indicadorMult1.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa1].ValorBase;
+
+    indicadorMult2 = document.getElementById('indicadorMult2');
+    if (arrayOfCoringa[pIdCoringa2].EhMult) {
+        pOperacao = "X";
+    } else {
+        pOperacao = "+";    
+    }
+    indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase;
+}
+
 function selecionarPasta() {
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
@@ -480,6 +512,8 @@ function selecionarPasta() {
 
     document.getElementById("imagem1").value = pIdCoringa1;
     document.getElementById("imagem2").value = pIdCoringa2;
+
+    atualizaIndicadorMult();
 }
 
 function infoCarta(pImagem){
