@@ -234,6 +234,13 @@ var jogador1 =true;
 let pasta = '';
 var pIdCoringa1;
 var pIdCoringa2;
+var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
+
+radios.forEach(function(radio) {
+        radio.onclick = function() {
+            CalculaPontuacao();
+        };
+    });
 
 let arrayOfCoringa = [
     {
@@ -403,6 +410,9 @@ function ResetaCoringas(){
     arrayOfCoringa[pIdCoringa2].QtdAtivacoes = 0;
     contadorSpan1.textContent = 0;
     contadorSpan2.textContent = 0; 
+
+    document.getElementById("valorEntrada").value = ""; 
+    document.getElementById("valorEntrada2").value = ""; 
 }
 
 function adicionar() {
@@ -413,15 +423,15 @@ function adicionar() {
     }
     
     if (!isNaN(entrada)) {
-     if(jogador1){
-         total = parseFloat(document.getElementById("valorSoma").value);
-      total = total + entrada;
-        document.getElementById("valorSoma").value = total;
-     } else {
-         total = parseFloat(document.getElementById("valorSoma2").value);
-      total = total + entrada;
-        document.getElementById("valorSoma2").value = total;
-     }
+        if(jogador1){
+            total = parseFloat(document.getElementById("valorSoma").value);
+        total = total + entrada;
+            document.getElementById("valorSoma").value = total;
+        } else {
+            total = parseFloat(document.getElementById("valorSoma2").value);
+        total = total + entrada;
+            document.getElementById("valorSoma2").value = total;
+        }
        
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
@@ -513,7 +523,9 @@ function selecionarPasta() {
     document.getElementById("imagem1").value = pIdCoringa1;
     document.getElementById("imagem2").value = pIdCoringa2;
 
+    ResetaCoringas();
     atualizaIndicadorMult();
+    atualizaContador();
 }
 
 function infoCarta(pImagem){
