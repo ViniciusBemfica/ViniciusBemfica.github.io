@@ -19,8 +19,10 @@ function addPontos(pImagem) {
 }
 
 function CalculaPontuacao(){
+    totalCalculo = 1;
+
     totalCalculo = parseFloat(document.querySelector('input[name="hand"]:checked').value);
-    
+        
     //Dois coringas são de somar
     if ((arrayOfCoringa[pIdCoringa1].EhMult == false) && (arrayOfCoringa[pIdCoringa2].EhMult == false)){
         totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
@@ -221,8 +223,8 @@ function selecionarPasta() {
     atualizaContador();
 }
 
-function infoCarta(pImagem){
-    alert(arrayOfCoringa[pImagem.value].Descricao);
+function infoCarta(pIdCoringa){
+    alert(arrayOfCoringa[pIdCoringa].Descricao);
 }
 
 function AtualizaCookie() { 
@@ -260,7 +262,6 @@ function ExibeCookie(){
     alert(vCookieString);   
 }
 
-//usado cada vez que clica no +
 function AdicionaNoLog(pJogador1, pPontuacao){
     if (pJogador1){
         vPontuacaoLogJ1 += pPontuacao + '|';

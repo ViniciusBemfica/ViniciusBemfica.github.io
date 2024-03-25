@@ -11,76 +11,66 @@
 <body>
 
 <div class="container">
+    <!-------- Poker Hands ---------->
     <div class="section">
-
         <label class="pokerHand" for="carta-alta">
-            <input type="radio" id="carta-alta" name="hand" value="1"> + 1 - CARTA ALTA
-            <br>
+            <input type="radio" id="carta-alta" name="hand" value="1" checked> + 1 - CARTA ALTA
         </label>
         
         <label class="pokerHand" for="par">
             <input type="radio" id="par" name="hand" value="2"> + 2 - PAR
-            <br>
         </label>
         
         <label class="pokerHand" for="dois-pares">
             <input type="radio" id="dois-pares" name="hand" value="3"> + 3 - DOIS PARES 
-            <br>
         </label>
         
         <label class="pokerHand" for="trinca">
             <input type="radio" id="trinca" name="hand" value="4"> + 4 - TRINCA 
-            <br>
         </label>
         
         <label class="pokerHand" for="sequencia">
             <input type="radio" id="sequencia" name="hand" value="5"> + 5 - SEQUÊNCIA 
-            <br>
         </label>
         
         <label class="pokerHand" for="flush">
             <input type="radio" id="flush" name="hand" value="6"> + 6 - FLUSH 
-            <br>
         </label>
         
         <label class="pokerHand" for="full-house">
             <input type="radio" id="full-house" name="hand" value="7"> + 7 - FULL HOUSE
-            <br>
         </label>
         
         <label class="pokerHand" for="quadra">
             <input type="radio" id="quadra" name="hand" value="8"> + 8 - QUADRA 
-            <br>
         </label>
         
         <label class="pokerHand" for="straight-flush">
             <input type="radio" id="straight-flush" name="hand" value="9"> + 9 - ST. FLUSH
-            <br>
         </label>
         
         <label class="pokerHand" for="royal-straight-flush">
             <input type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL
-            <br>
-        </label>
+        </label>  
+    </div>
 
-    <br><br><br>
-     
-</div>
-
+    <!-------- Coringas ---------->
     <div class="section">
-        <img id="imagem1" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 1" class="visible">
+        <img id="imagem1" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 1" class="visible">
         <span class="contadorSpan" id = "contadorSpan1">0</span>
         <span class="indicadorMult" id = "indicadorMult1">0</span>
         <br>
-        <button onclick="selecionarImagem2('imagem1')">1</button>
+        <button onclick="infoCarta(pIdCoringa1)">1</button>
     </div>
     <div class="section">
-        <img id="imagem2" onclick="addPontos(this)" ondblclick="infoCarta(this)" src="placeholder.jpg" alt="Imagem 2" class="visible">
+        <img id="imagem2" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 2" class="visible">
         <span class="contadorSpan" id = "contadorSpan2">0</span>
         <span class="indicadorMult" id = "indicadorMult2">0</span>
         <br>
-        <button onclick="selecionarImagem3('imagem2')">2</button>
+        <button onclick="infoCarta(pIdCoringa2)">2</button>
     </div>
+
+    <!-------- Pontos ---------->
     <div class="calculator-section">
         <div class="button-row">
             <button class="botaoLargo" onclick="selecionarPasta()">🎲 🃏</button>             
@@ -121,12 +111,14 @@ var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
 var vPontuacaoLogJ1 = ""; 
 var vPontuacaoLogJ2 = "";
 
+//Atualiza Pontuação ao clicar nos PokerHands
 radios.forEach(function(radio) {
     radio.onclick = function() {
         CalculaPontuacao();
     };
 });
 
+//Coringas
 let arrayOfCoringa = [
     {
         Id: 0,
