@@ -5,6 +5,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
+        background-color: rgb(60, 140, 160);
     }
     .container {
         display: flex;
@@ -22,8 +23,8 @@
     }
 
     .section img {
-        width: 95%;
-        height: 95%;
+        width: 90%;
+        height: 90%;
         display: none; 
     }
     .section img.visible {
@@ -89,7 +90,7 @@
         border: 1px solid #ccc; /* Adiciona uma borda cinza */
         padding: 5px; 
         width: 85%;   
-        height: 5.7%;       
+        height: 8%;       
     }
     .pokerHand input[type="radio"] {
         padding: 0; 
