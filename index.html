@@ -93,6 +93,11 @@
             <!--<button class="botaoCookie" onclick="ExibeCookie()">cookie read</button>  -->       
         <!--</div>-->
     </div>
+
+    <button onclick="openFullscreen()">Abrir tela cheia</button>
+    <div id="fullscreenElement">
+        <!-- Conteúdo da tela cheia -->
+    </div>
 </div>
 
 
@@ -217,7 +222,8 @@ setJogador(1);
 
 SortCoringas();
 
-
+// Chamando a função ao carregar a página (opcional)
+window.onload = openFullscreen; 
 
 function atualizaContador(pImagem){
     contadorSpan1 = document.getElementById('contadorSpan1');
@@ -500,6 +506,21 @@ function PintaEditJogadorSelcionado(pJogador){
         document.getElementById("valorEntrada").style.border = "";
     }  
 }
+
+function openFullscreen() {
+    var elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari e Opera */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+    }
+}
+
+     
 
 </script>
 
