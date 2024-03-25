@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" ondblclick="openFullscreen()">
     <!-------- Poker Hands ---------->
     <div class="section">
         <label class="pokerHand" for="carta-alta">
@@ -437,9 +437,7 @@ function SortCoringas() {
 
     ResetaCoringas();
     atualizaIndicadorMult();
-    atualizaContador();
-
-    openFullscreen();
+    atualizaContador(); 
 }
 
 function infoCarta(pIdCoringa){

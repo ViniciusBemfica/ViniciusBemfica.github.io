@@ -24,7 +24,7 @@
 
     .section img {
         width: 90%;
-        height: 90%;
+        height: 85%;
         display: none; 
     }
     .section img.visible {
@@ -90,7 +90,7 @@
         border: 1px solid #ccc; /* Adiciona uma borda cinza */
         padding: 5px; 
         width: 85%;   
-        height: 8%;       
+        height: 7.5%;       
     }
     .pokerHand input[type="radio"] {
         padding: 0; 
