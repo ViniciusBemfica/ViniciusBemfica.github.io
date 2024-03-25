@@ -176,10 +176,8 @@
             <br>
         </label>
         
-
     <br><br><br>
-    
-    
+     
 </div>
 
     <div class="section">
@@ -199,6 +197,8 @@
     <div class="calculator-section">
         <div class="button-row">
             <button class="botaoLargo" onclick="adicionar()">+</button>
+            <!--<button class="botaoLargo" onclick="AtualizaCookie()">cookie add</button>-->
+            <!--<button class="botaoLargo" onclick="ExibeCookie()">cookie read</button>  -->          
         </div>
         <div class="button-row">
         <input onclick="setJogador(true)" ondblclick="excluir2()" readonly type="text" id="valorEntrada" placeholder="Jogador 1">
@@ -228,6 +228,7 @@ let pasta = '';
 var pIdCoringa1;
 var pIdCoringa2;
 var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
+var vPontuacaoLogJ1 = [];
 
 radios.forEach(function(radio) {
         radio.onclick = function() {
@@ -451,6 +452,8 @@ function adicionar() {
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
 
+        AdicionaNoLog(total);
+
         ResetaCoringas();
     } else {
         alert("Por favor, digite um número válido.");
@@ -546,6 +549,42 @@ function selecionarPasta() {
 function infoCarta(pImagem){
     alert(arrayOfCoringa[pImagem.value].Descricao);
 }
+
+function AtualizaCookie(vValor) {
+      let vCookieString = getCookie("CookieLog");
+      if (vCookieString != "" && vCookieString !== null) {
+        vCookieString = CookieRetornaLog(vCookieString); 
+        setCookie("CookieLog", vCookieString, 30);
+      } else {
+        setCookie("CookieLog", "", 30); 
+      }
+    } 
+
+function getCookie(c_name) {
+    return localStorage.getItem(c_name);
+}
+
+function setCookie(c_name, value, expiredays) {
+    return localStorage.setItem(c_name, value);
+}
+
+function CookieRetornaLog(pLogAntes){
+    vAdicionarNoLog = vPontuacaoLogJ1;
+    vLogNovo = pLogAntes + vAdicionarNoLog;
+    
+    return vLogNovo;
+}
+
+function ExibeCookie(){
+    var vCookieString = getCookie("CookieLog"); 
+    
+    alert(vCookieString);
+}
+
+function AdicionaNoLog(pPontuacao){
+    vPontuacaoLogJ1 += vPontuacaoLogJ1 + pPontuacao + '|'
+}
+
 </script>
 
 </body>
