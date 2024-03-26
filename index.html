@@ -88,10 +88,10 @@
             <button class="botaoLargo" onclick="adicionar()">✓</button>      
         </div>
         <br>
-        <!--<div class="button-row">-->
-            <!--<button class="botaoCookie" onclick="AtualizaCookie()">cookie add</button>-->
-            <!--<button class="botaoCookie" onclick="ExibeCookie()">cookie read</button>  -->       
-        <!--</div>-->
+        <div class="button-row">
+            <button class="botaoCookie" onclick="AtualizaCookie()">Cookie add</button>
+            <button class="botaoCookie" onclick="ExibeCookie()">Top da Mesa</button>       
+        </div>
     </div>
 </div>
 
@@ -346,7 +346,7 @@ function adicionar() {
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
 
-        AdicionaNoLog(jogador1Selecionado, entrada);
+        // AdicionaNoLog(jogador1Selecionado, entrada);
 
         ResetaCoringas();
     } else {
@@ -445,14 +445,13 @@ function infoCarta(pIdCoringa){
 }
 
 function AtualizaCookie() { 
-    
     var vCookieString = getCookie("CookieLog");   
     
     if (vCookieString != "" && vCookieString !== null) {     
         vCookieString = CookieAtualizaLog(vCookieString); 
         setCookie("CookieLog", vCookieString, 30);      
     } else { 
-        setCookie("CookieLog", "Inicio", 30); 
+        setCookie("CookieLog", "Inicio;", 30); 
     }    
 } 
 
@@ -465,10 +464,17 @@ function setCookie(c_name, value, expiredays) {
 }
 
 function CookieAtualizaLog(pLogAntes){     
-    vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2;
-    vAdicionarNoLog += '\n' + 'J1|' + vPontuacaoLogJ1;
-    vAdicionarNoLog += '\n' + 'J2|' + vPontuacaoLogJ2;
-    vLogNovo = pLogAntes + vAdicionarNoLog;
+    vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2 + '|';  
+
+    if (document.getElementById("valorSoma").value > document.getElementById("valorSoma2").value){
+        vAdicionarNoLog += 'J1|' + document.getElementById("valorSoma").value;
+    } else if (document.getElementById("valorSoma2").value > document.getElementById("valorSoma").value) {
+        vAdicionarNoLog += 'J2|' + document.getElementById("valorSoma2").value;       
+    } else {
+        vAdicionarNoLog += 'EMP|' + document.getElementById("valorSoma").value;    
+    }
+
+    vLogNovo = pLogAntes + vAdicionarNoLog + ';';
 
     return vLogNovo;
 }
@@ -476,7 +482,9 @@ function CookieAtualizaLog(pLogAntes){
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
     
-    alert(vCookieString);   
+    var pMelhorDaMesa = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
+
+    alert(pMelhorDaMesa)
 }
 
 function AdicionaNoLog(pjogador1Selecionado, pPontuacao){
@@ -508,6 +516,55 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE/Edge */
         elem.msRequestFullscreen();
     }   
+}
+
+
+function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2) {
+    // Divide o texto em linhas
+    var linhas = vCookieString.split(";");
+
+    // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
+    var maiorPontuacao = 0;
+    var jogador = "";
+
+    // Itera sobre cada linha
+    for (var i = 0; i < linhas.length; i++) {
+        // Divide a linha em elementos separados
+        var elementos = linhas[i].split("|");
+
+        // Inicializa as variáveis para armazenar as pontuações dos Coringas e o jogador correspondente
+        var pontuacaoC1 = 0;
+        var pontuacaoC2 = 0;
+        var jogadorAtual = "";
+
+        // Itera sobre os elementos para encontrar as pontuações dos Coringas e o jogador correspondente
+        for (var j = 0; j < elementos.length; j += 2) {
+            if ((elementos[j] === "\nC1" && elementos[j + 1] == pIdCoringa1) || (elementos[j] === "C2" && elementos[j + 1] == pIdCoringa1)) {
+                pontuacaoC1 = parseInt(elementos[j + 5], 10);
+            } else if ((elementos[j] === "\nC1" && elementos[j + 1] == pIdCoringa2) || (elementos[j] === "C2" && elementos[j + 1] == pIdCoringa2)) {
+                pontuacaoC2 = parseInt(elementos[j + 3], 10);
+            } else if (elementos[j].startsWith("J")) {
+                jogadorAtual = elementos[j];
+            }
+        }
+
+        // Verifica se há uma pontuação válida para ambos os Coringas
+        if (pontuacaoC1 > 0 && pontuacaoC2 > 0) {
+            var maiorPontuacaoAtual = Math.max(pontuacaoC1, pontuacaoC2);
+            if (maiorPontuacaoAtual > maiorPontuacao) {
+                maiorPontuacao = maiorPontuacaoAtual;
+                jogador = jogadorAtual;
+            }
+        }
+    }
+
+    var vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
+                        "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
+                        "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
+                        "Maior Pontuação: " + maiorPontuacao + '\n' +
+                        "Jogador: " + jogador;
+    // Retorna um objeto contendo a maior pontuação e o jogador correspondente
+    return vMelhorDaMesa;
 }
 
      
