@@ -500,13 +500,14 @@ function CookieAtualizaLog(pLogAntes){
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
 
-    var {maiorPontuacao, vTotalLinhasMesa, vTotalLinhas} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
+    var {maiorPontuacao, vTotalLinhasMesa, vTotalLinhas, vMaiorPontuacaoGeral} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
 
     vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
                         "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
                         "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
                         "Maior Pontuação: " + maiorPontuacao + '\n' +
                         "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
+                        "Maior Pontuação Geral: " + vMaiorPontuacaoGeral + '\n' +
                         "Total Mesas Jogadas: " + vTotalLinhas;
 
     alert(vMelhorDaMesa);
@@ -552,6 +553,7 @@ function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2) {
 
     // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
     var maiorPontuacao = 0;
+    var vMaiorPontuacaoGeral =0;
 
     // Itera sobre cada linha
     for (var i = 0; i < linhas.length; i++) {
@@ -568,17 +570,20 @@ function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2) {
             vTotalLinhasMesa++;
         }  
         
-
         // Verifica se há uma pontuação válida para ambos os Coringas
         if (pontuacao > maiorPontuacao) {
             maiorPontuacao = pontuacao;
         } 
-       
+
+        vPontuacaoGeral = parseInt(elementos[5], 10);
+        if (vPontuacaoGeral > vMaiorPontuacaoGeral) {
+            vMaiorPontuacaoGeral = vPontuacaoGeral;
+        } 
     }
 
     
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
-    return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas};
+    return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas, vMaiorPontuacaoGeral: vMaiorPontuacaoGeral};
 }
 
 
