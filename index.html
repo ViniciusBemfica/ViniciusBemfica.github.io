@@ -442,10 +442,16 @@ function SortCoringas() {
     atualizaIndicadorMult();
     atualizaContador(); 
 
+    AtualizaTopDaMesa();
+    
+}
+
+function AtualizaTopDaMesa(){
     var vCookieString = getCookie("CookieLog"); 
-    vTopoDaMesa = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2);
+    var {maiorPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
+
     document.getElementById("TopDaMesa").textContent = 'Top da Mesa: ';
-    document.getElementById("TopDaMesa").textContent += vTopoDaMesa;
+    document.getElementById("TopDaMesa").textContent += maiorPontuacao;
 }
 
 function infoCarta(pIdCoringa){
@@ -462,7 +468,7 @@ function AtualizaCookie() {
         setCookie("CookieLog", "Inicio;", 30); 
     }    
 
-    ExibeCookie();
+    AtualizaTopDaMesa();
 } 
 
 function getCookie(c_name) {
@@ -489,15 +495,19 @@ function CookieAtualizaLog(pLogAntes){
     return vLogNovo;
 }
 
+
+
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
 
-    maiorPontuacao = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
+    var {maiorPontuacao, vTotalLinhasMesa, vTotalLinhas} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
 
     vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
                         "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
                         "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
-                        "Maior Pontuação: " + maiorPontuacao;
+                        "Maior Pontuação: " + maiorPontuacao + '\n' +
+                        "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
+                        "Total Mesas Jogadas: " + vTotalLinhas;
 
     alert(vMelhorDaMesa);
 }
@@ -534,9 +544,11 @@ function openFullscreen() {
 }
 
 
-function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2) {
+function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2) {
     // Divide o texto em linhas
     var linhas = vCookieString.split(";");
+    var vTotalLinhas = linhas.length;
+    var vTotalLinhasMesa = 0;
 
     // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
     var maiorPontuacao = 0;
@@ -553,6 +565,7 @@ function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2
         
         if ((elementos[1] == pIdCoringa1) && (elementos[3] == pIdCoringa2) || (elementos[1] == pIdCoringa2) && (elementos[3] == pIdCoringa1)) {
             pontuacao = parseInt(elementos[5], 10);
+            vTotalLinhasMesa++;
         }  
         
 
@@ -565,8 +578,10 @@ function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2
 
     
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
-    return (maiorPontuacao);
+    return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas};
 }
+
+
 
      
 
