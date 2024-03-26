@@ -89,7 +89,7 @@
         </div>
         <br>
         <div class="button-row">
-            <button class="botaoCookie" onclick="AtualizaCookie()">Cookie add</button>
+            <button class="botaoCookie" onclick="AtualizaCookie()">Grava Log</button>
             <button class="botaoCookie" onclick="ExibeCookie()">Top da Mesa</button>       
         </div>
     </div>
@@ -445,14 +445,20 @@ function infoCarta(pIdCoringa){
 }
 
 function AtualizaCookie() { 
-    var vCookieString = getCookie("CookieLog");   
+    alert("Log Atualizado teste");
     
-    if (vCookieString != "" && vCookieString !== null) {     
-        vCookieString = CookieAtualizaLog(vCookieString); 
-        setCookie("CookieLog", vCookieString, 30);      
-    } else { 
-        setCookie("CookieLog", "Inicio;", 30); 
-    }    
+    setCookie("CookieLog", vCookieString, 30); 
+
+    // encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
+
+    // var vCookieString = getCookie("CookieLog");   
+    
+    // if (vCookieString != "" && vCookieString !== null) {     
+    //     vCookieString = CookieAtualizaLog(vCookieString); 
+    //     setCookie("CookieLog", vCookieString, 30);      
+    // } else { 
+    //     setCookie("CookieLog", "Inicio;", 30); 
+    // }    
 } 
 
 function getCookie(c_name) {
@@ -482,9 +488,8 @@ function CookieAtualizaLog(pLogAntes){
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
     
-    var pMelhorDaMesa = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
+    encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
 
-    alert(pMelhorDaMesa)
 }
 
 function AdicionaNoLog(pjogador1Selecionado, pPontuacao){
@@ -525,7 +530,6 @@ function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2
 
     // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
     var maiorPontuacao = 0;
-    var jogador = "";
 
     // Itera sobre cada linha
     for (var i = 0; i < linhas.length; i++) {
@@ -533,38 +537,28 @@ function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2
         var elementos = linhas[i].split("|");
 
         // Inicializa as variáveis para armazenar as pontuações dos Coringas e o jogador correspondente
-        var pontuacaoC1 = 0;
-        var pontuacaoC2 = 0;
-        var jogadorAtual = "";
+        var pontuacao = 0;
 
         // Itera sobre os elementos para encontrar as pontuações dos Coringas e o jogador correspondente
-        for (var j = 0; j < elementos.length; j += 2) {
-            if ((elementos[j] === "\nC1" && elementos[j + 1] == pIdCoringa1) || (elementos[j] === "C2" && elementos[j + 1] == pIdCoringa1)) {
-                pontuacaoC1 = parseInt(elementos[j + 5], 10);
-            } else if ((elementos[j] === "\nC1" && elementos[j + 1] == pIdCoringa2) || (elementos[j] === "C2" && elementos[j + 1] == pIdCoringa2)) {
-                pontuacaoC2 = parseInt(elementos[j + 3], 10);
-            } else if (elementos[j].startsWith("J")) {
-                jogadorAtual = elementos[j];
-            }
-        }
+        
+        if ((elementos[1] == pIdCoringa1) && (elementos[3] == pIdCoringa2) || (elementos[1] == pIdCoringa2) && (elementos[3] == pIdCoringa1)) {
+            pontuacao = parseInt(elementos[5], 10);
+        }  
+        
 
         // Verifica se há uma pontuação válida para ambos os Coringas
-        if (pontuacaoC1 > 0 && pontuacaoC2 > 0) {
-            var maiorPontuacaoAtual = Math.max(pontuacaoC1, pontuacaoC2);
-            if (maiorPontuacaoAtual > maiorPontuacao) {
-                maiorPontuacao = maiorPontuacaoAtual;
-                jogador = jogadorAtual;
-            }
-        }
+        if (pontuacao > maiorPontuacao) {
+            maiorPontuacao = pontuacao;
+        } 
+       
     }
 
     var vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
                         "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
                         "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
-                        "Maior Pontuação: " + maiorPontuacao + '\n' +
-                        "Jogador: " + jogador;
+                        "Maior Pontuação: " + maiorPontuacao;
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
-    return vMelhorDaMesa;
+    alert(vMelhorDaMesa);
 }
 
      
