@@ -445,20 +445,16 @@ function infoCarta(pIdCoringa){
 }
 
 function AtualizaCookie() { 
-    alert("Log Atualizado teste");
-    
-    setCookie("CookieLog", vCookieString, 30); 
+    encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
 
-    // encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
-
-    // var vCookieString = getCookie("CookieLog");   
+    var vCookieString = getCookie("CookieLog");   
     
-    // if (vCookieString != "" && vCookieString !== null) {     
-    //     vCookieString = CookieAtualizaLog(vCookieString); 
-    //     setCookie("CookieLog", vCookieString, 30);      
-    // } else { 
-    //     setCookie("CookieLog", "Inicio;", 30); 
-    // }    
+    if (vCookieString != "" && vCookieString !== null) {     
+        vCookieString = CookieAtualizaLog(vCookieString); 
+        setCookie("CookieLog", vCookieString, 30);      
+    } else { 
+        setCookie("CookieLog", "Inicio;", 30); 
+    }    
 } 
 
 function getCookie(c_name) {
