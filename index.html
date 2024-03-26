@@ -92,6 +92,9 @@
             <button class="botaoCookie" onclick="AtualizaCookie()">Fim do Jogo</button>
             <button class="botaoCookie" onclick="ExibeCookie()">Top da Mesa</button>       
         </div>
+        <div class="button-row">
+            <label id="TopDaMesa" class="TopDaMesa">Top da Mesa: </label>      
+        </div>
     </div>
 </div>
 
@@ -438,6 +441,11 @@ function SortCoringas() {
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 
+
+    var vCookieString = getCookie("CookieLog"); 
+    vTopoDaMesa = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2);
+    document.getElementById("TopDaMesa").textContent = 'Top da Mesa: ';
+    document.getElementById("TopDaMesa").textContent += vTopoDaMesa;
 }
 
 function infoCarta(pIdCoringa){
@@ -445,16 +453,16 @@ function infoCarta(pIdCoringa){
 }
 
 function AtualizaCookie() { 
-    encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
-
     var vCookieString = getCookie("CookieLog");   
-    
+        
     if (vCookieString != "" && vCookieString !== null) {     
         vCookieString = CookieAtualizaLog(vCookieString); 
         setCookie("CookieLog", vCookieString, 30);      
     } else { 
         setCookie("CookieLog", "Inicio;", 30); 
     }    
+
+    ExibeCookie();
 } 
 
 function getCookie(c_name) {
@@ -483,9 +491,15 @@ function CookieAtualizaLog(pLogAntes){
 
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
-    
-    encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
 
+    maiorPontuacao = encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2); 
+
+    vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
+                        "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
+                        "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
+                        "Maior Pontuação: " + maiorPontuacao;
+
+    alert(vMelhorDaMesa);
 }
 
 function AdicionaNoLog(pjogador1Selecionado, pPontuacao){
@@ -549,12 +563,9 @@ function encontrarMaiorPontuacaoEJogador(vCookieString, pIdCoringa1, pIdCoringa2
        
     }
 
-    var vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
-                        "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
-                        "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
-                        "Maior Pontuação: " + maiorPontuacao;
+    
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
-    alert(vMelhorDaMesa);
+    return (maiorPontuacao);
 }
 
      

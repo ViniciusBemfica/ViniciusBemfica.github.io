@@ -131,3 +131,6 @@
     .EditJogadorSelcionado{
         border: 1px solid #fc0000;    
     }
+    .TopDaMesa{
+        color: white;
+    }
