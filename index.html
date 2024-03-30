@@ -59,14 +59,18 @@
         <span class="contadorSpan" id = "contadorSpan1">0</span>
         <span class="indicadorMult" id = "indicadorMult1">0</span>
         <br>
-        <button onclick="infoCarta(pIdCoringa1)">Info</button>
+        <label class="InforNomeCoringa" id="InforNomeCoringa1"></label>
+        <br>
+        <label class="InforCoringa" id="InforCoringa1"></label>
     </div>
     <div class="section">
         <img id="imagem2" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 2" class="visible">
         <span class="contadorSpan" id = "contadorSpan2">0</span>
         <span class="indicadorMult" id = "indicadorMult2">0</span>
         <br>
-        <button onclick="infoCarta(pIdCoringa2)">Info</button>
+        <label class="InforNomeCoringa" id="InforNomeCoringa2"></label>
+        <br>
+        <label class="InforCoringa" id="InforCoringa2"></label>
     </div>
 
     <!-------- Pontos ---------->
@@ -117,6 +121,7 @@ var vPontuacaoLogJ2 = "";
 let arrayOfCoringa = [
     {
         Id: 0,
+        Nome: "0",
         Descricao: "Dummy",
         EhMult: false,
         ValorBase: 2,
@@ -124,84 +129,96 @@ let arrayOfCoringa = [
     },
     {
         Id: 1,
-        Descricao: "1 - Ouro +2",
+        Nome: "Ourolino",
+        Descricao: "Ouro +2",
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 2,
-        Descricao: "2 - quando 0 descartes, x2",
+        Nome: "2",
+        Descricao: "Quando 0 descartes, x2",
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 3,
-        Descricao: "3 - A +5",
+        Nome: "3",
+        Descricao: "A +5",
         EhMult: false,
         ValorBase: 5,
         QtdAtivacoes: 0
     },
     {
         Id: 4,
-        Descricao: "4 - Face +2",
+        Nome: "4",
+        Descricao: "Face +2",
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 5,
-        Descricao: "5 - Straight e straight flush x2",
+        Nome: "5",
+        Descricao: "Straight e straight flush x2",
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 6,
-        Descricao: "6 - Cada Par +3",
+        Nome: "6",
+        Descricao: "Cada Par +3",
         EhMult: false,
         ValorBase: 3,
         QtdAtivacoes: 0
     },
     {
         Id: 7,
-        Descricao: "7 - Carta Impar +2",
+        Nome: "7",
+        Descricao: "Carta Impar +2",
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 8,
-        Descricao: "8 - Carta par +2",
+        Nome: "8",
+        Descricao: "Carta par +2",
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 9,
-        Descricao: "9 - Straight e straight flush com 4 cartas",
+        Nome: "9",
+        Descricao: "Straight e straight flush com 4 cartas",
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0
     },
     {
         Id: 10,
-        Descricao: "10 - Jogar 4 cartas x2",
+        Nome: "10",
+        Descricao: "Jogar 4 cartas x2",
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 11,
-        Descricao: "11 - Score com 4 naipes diferentes x2",
+        Nome: "11",
+        Descricao: "Score com 4 naipes diferentes x2",
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0
     },
     {
         Id: 12,
-        Descricao: "12 - Tudo vermelho é ouro",
+        Nome: "12",
+        Descricao: "Tudo vermelho é ouro",
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0
@@ -441,9 +458,15 @@ function SortCoringas() {
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 
-
     AtualizaTopDaMesa();
-    
+    AtualizaInfosConringas();   
+}
+
+function AtualizaInfosConringas(){   
+    document.getElementById("InforNomeCoringa1").textContent = "{ " + arrayOfCoringa[pIdCoringa1].Nome + " }" ;
+    document.getElementById("InforNomeCoringa2").textContent = "{ " + arrayOfCoringa[pIdCoringa2].Nome + " }" ;
+    document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Descricao;
+    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Descricao;   
 }
 
 function AtualizaTopDaMesa(){
@@ -452,10 +475,6 @@ function AtualizaTopDaMesa(){
 
     document.getElementById("TopDaMesa").textContent = 'Top da Mesa: ';
     document.getElementById("TopDaMesa").textContent += maiorPontuacao;
-}
-
-function infoCarta(pIdCoringa){
-    alert(arrayOfCoringa[pIdCoringa].Descricao);
 }
 
 function AtualizaCookie() { 
@@ -494,8 +513,6 @@ function CookieAtualizaLog(pLogAntes){
 
     return vLogNovo;
 }
-
-
 
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
