@@ -23,9 +23,10 @@
     }
 
     .section img {
-        width: 90%;
-        height: 50%;
+        width: 100%;
+        height: 60%;
         display: none; 
+        padding-top: 10px;
     }
     .section img.visible {
         display: block;
@@ -144,8 +145,8 @@
         font-weight: bold;
     }
     .card {
-        width: 80%;
-        height: 120px;
+        width: 90%;
+        height: 90%;
         background-color: #D3DDDD; 
         border: 1px solid #000000;
         border-radius: 15px; /* Arredondamento aumentado */
