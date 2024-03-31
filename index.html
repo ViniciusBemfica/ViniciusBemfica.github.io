@@ -59,9 +59,12 @@
         <span class="contadorSpan" id = "contadorSpan1">0</span>
         <span class="indicadorMult" id = "indicadorMult1">0</span>
         <br>
-        <label class="InforNomeCoringa" id="InforNomeCoringa1"></label>
-        <br>
-        <label class="InforCoringa" id="InforCoringa1"></label>
+        <div class="card">
+            <div class="card-name" id="InforNomeCoringa1"><label class="InforNomeCoringa" id="InforNomeCoringa1"></label></div>    
+            <div class="card-description">
+                <label class="card-description" id="InforCoringa1"></label>
+            </div>
+        </div>
     </div>
     <div class="section">
         <img id="imagem2" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 2" class="visible">
@@ -463,8 +466,8 @@ function SortCoringas() {
 }
 
 function AtualizaInfosConringas(){   
-    document.getElementById("InforNomeCoringa1").textContent = "{ " + arrayOfCoringa[pIdCoringa1].Nome + " }" ;
-    document.getElementById("InforNomeCoringa2").textContent = "{ " + arrayOfCoringa[pIdCoringa2].Nome + " }" ;
+    document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
+    document.getElementById("InforNomeCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Nome;
     document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Descricao;
     document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Descricao;   
 }
