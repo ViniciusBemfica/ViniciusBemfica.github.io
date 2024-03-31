@@ -107,26 +107,26 @@
     }
     .contadorSpan {
         position: absolute;
-        top: 15px;
+        bottom: 15px;
         left: 15px;
         background-color: rgba(130, 255, 147, 0.7);
         color: rgba(255, 0, 0, 0.7);
         padding: 5px 5px;
         border-radius: 50%;
         font-family: Arial, sans-serif;
-        font-size: 50px;
+        font-size: 40px;
         font-weight: bold;
     }
     .indicadorMult {
         position: absolute;
-        top: 15px;
+        bottom: 15px;
         right: 15px;
         background-color: rgba(130, 255, 147, 0.7);
         color: rgba(255, 0, 0, 0.7);
         padding: 5px 5px;
         border-radius: 50%;
         font-family: Arial, sans-serif;
-        font-size: 50px;
+        font-size: 40px;
         font-weight: bold;
     }
     .EditJogadorSelcionado{
@@ -145,8 +145,8 @@
         font-weight: bold;
     }
     .card {
-        width: 90%;
-        height: 90%;
+        width: 95%;
+        height: 95%;
         background-color: #D3DDDD; 
         border: 1px solid #000000;
         border-radius: 15px; /* Arredondamento aumentado */
@@ -162,10 +162,10 @@
         padding-left: 8px;
         border-radius: 12px; /* Arredondamento aumentado */
         border: 1px solid #000000; /* Adicionando borda preta */
-        font-size: 18px;
+        font-size: 17px;
         font-weight: bold;
     }
     .card-description {
-        font-size: 16px;
+        font-size: 14px;
         padding-top: 8px;
     }
