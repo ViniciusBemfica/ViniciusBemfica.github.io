@@ -55,11 +55,11 @@
 
     <!-------- Coringas ---------->
     <div class="section">      
-        <div class="card">
+        <div class="card" id="coringaFrame1" onclick="addPontos(this)">
             <div class="card-name" id="InforNomeCoringa1">
                 <label class="InforNomeCoringa" id="InforNomeCoringa1"></label>
             </div>  
-            <img id="imagem1" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 1" class="visible">  
+            <img id="imagem1" src="placeholder.jpg" alt="Imagem 1" class="visible">  
             <div class="card-description">
                 <label class="card-description" id="InforCoringa1"></label>
             </div>
@@ -69,11 +69,11 @@
         
     </div>
     <div class="section"> 
-        <div class="card">
+        <div class="card" id="coringaFrame2" onclick="addPontos(this)">
             <div class="card-name" id="InforNomeCoringa2">
                 <label class="InforNomeCoringa" id="InforNomeCoringa2"></label>
             </div>   
-            <img id="imagem2" onclick="addPontos(this)"  src="placeholder.jpg" alt="Imagem 2" class="visible"> 
+            <img id="imagem2" src="placeholder.jpg" alt="Imagem 2" class="visible"> 
             <div class="card-description">
                 <label class="card-description" id="InforCoringa2"></label>
             </div>
@@ -244,7 +244,7 @@ window.onload = function() {
     setJogador(1);
 };
 
-function atualizaContador(pImagem){
+function atualizaContador(){
     contadorSpan1 = document.getElementById('contadorSpan1');
     contadorSpan2 = document.getElementById('contadorSpan2');
 
@@ -257,7 +257,7 @@ function addPontos(pImagem) {
     
     pImagem.style.border = "4px solid red";
 
-    atualizaContador(pImagem);
+    atualizaContador();
 
     CalculaPontuacao(); 
 }
@@ -343,8 +343,8 @@ function excluir2 (){
 }
 
 function ResetaCoringas(){
-    document.getElementById("imagem1").style.border = ""; 
-    document.getElementById("imagem2").style.border = ""; 
+    document.getElementById("coringaFrame1").style.border = ""; 
+    document.getElementById("coringaFrame2").style.border = ""; 
     arrayOfCoringa[pIdCoringa1].QtdAtivacoes = 0;
     arrayOfCoringa[pIdCoringa2].QtdAtivacoes = 0;
     contadorSpan1.textContent = 0;
@@ -461,8 +461,10 @@ function SortCoringas() {
     document.getElementById('imagem1').src = caminhoImagem1;
     document.getElementById('imagem2').src = caminhoImagem2;
 
-    document.getElementById("imagem1").value = pIdCoringa1;
-    document.getElementById("imagem2").value = pIdCoringa2;
+    // document.getElementById("imagem1").value = pIdCoringa1;
+    // document.getElementById("imagem2").value = pIdCoringa2;
+    document.getElementById("coringaFrame1").value = pIdCoringa1;
+    document.getElementById("coringaFrame2").value = pIdCoringa2;
 
     ResetaCoringas();
     atualizaIndicadorMult();
