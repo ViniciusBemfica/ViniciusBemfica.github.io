@@ -1,9 +1,11 @@
 function atualizaContador(){
     contadorSpan1 = document.getElementById('contadorSpan1');
     contadorSpan2 = document.getElementById('contadorSpan2');
+    contadorSpan3 = document.getElementById('contadorSpan3');
 
     contadorSpan1.textContent = arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-    contadorSpan2.textContent = arrayOfCoringa[pIdCoringa2].QtdAtivacoes;   
+    contadorSpan2.textContent = arrayOfCoringa[pIdCoringa2].QtdAtivacoes; 
+    contadorSpan3.textContent = arrayOfCoringa[pIdCoringa3].QtdAtivacoes;  
 }
 
 function addPontos(pImagem) {
@@ -23,8 +25,11 @@ function CalculaPontuacao(){
     const vCoringa2 = { valor: arrayOfCoringa[pIdCoringa2].ValorBase, 
             QtdAtivacoes: arrayOfCoringa[pIdCoringa2].QtdAtivacoes,
             operadorEhMult: arrayOfCoringa[pIdCoringa2].EhMult};
+    const vCoringa3 = { valor: arrayOfCoringa[pIdCoringa3].ValorBase, 
+        QtdAtivacoes: arrayOfCoringa[pIdCoringa3].QtdAtivacoes,
+        operadorEhMult: arrayOfCoringa[pIdCoringa3].EhMult};        
 
-    const vCoringas = [vCoringa1, vCoringa2];
+    const vCoringas = [vCoringa1, vCoringa2, vCoringa3];
 
     var vTotal = parseFloat(document.querySelector('input[name="hand"]:checked').value);
 
@@ -40,12 +45,13 @@ function CalculaPontuacao(){
 
     vCoringas.forEach(vCoringa => {
     if (vCoringa.operadorEhMult){
-        vTotal *= vCoringa.valor * vCoringa.QtdAtivacoes;
+        if (vCoringa.QtdAtivacoes > 0){
+            vTotal *= vCoringa.valor * vCoringa.QtdAtivacoes;
+        }       
     } else {
         vTotal += vCoringa.valor * vCoringa.QtdAtivacoes;          
     }
     }); 
-
 
     if(jogador1Selecionado) {
         document.getElementById("valorEntrada").value = vTotal;
@@ -94,10 +100,13 @@ function excluir2 (){
 function ResetaCoringas(){
     document.getElementById("coringaFrame1").style.border = ""; 
     document.getElementById("coringaFrame2").style.border = ""; 
+    document.getElementById("coringaFrame3").style.border = ""; 
     arrayOfCoringa[pIdCoringa1].QtdAtivacoes = 0;
     arrayOfCoringa[pIdCoringa2].QtdAtivacoes = 0;
+    arrayOfCoringa[pIdCoringa3].QtdAtivacoes = 0;
     contadorSpan1.textContent = 0;
     contadorSpan2.textContent = 0; 
+    contadorSpan3.textContent = 0; 
 
     document.getElementById("valorEntrada").value = ""; 
     document.getElementById("valorEntrada2").value = ""; 
@@ -157,6 +166,14 @@ function atualizaIndicadorMult(){
         pOperacao = "+";    
     }
     indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase;
+
+    indicadorMult3 = document.getElementById('indicadorMult3');
+    if (arrayOfCoringa[pIdCoringa3].EhMult) {
+        pOperacao = "X";
+    } else {
+        pOperacao = "+";    
+    }
+    indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase;
 }
 
 function SortCoringas() {   
@@ -171,22 +188,27 @@ function SortCoringas() {
     // Gerar dois números aleatórios entre 1 e o total de imagens
     const random1 = getRandomIndex(indicesDisponiveis);
     const random2 = getRandomIndex(indicesDisponiveis);
+    const random3 = getRandomIndex(indicesDisponiveis);
 
     pIdCoringa1 = random1;
     pIdCoringa2 = random2;
+    pIdCoringa3= random3;
 
     // Criar o caminho para as imagens aleatórias
     const caminhoImagem1 = `${pasta}${random1}.jpg`;
     const caminhoImagem2 = `${pasta}${random2}.jpg`;
+    const caminhoImagem3 = `${pasta}${random3}.jpg`;
 
     // Atualizar as imagens no HTML
     document.getElementById('imagem1').src = caminhoImagem1;
     document.getElementById('imagem2').src = caminhoImagem2;
+    document.getElementById('imagem3').src = caminhoImagem3;
 
     // document.getElementById("imagem1").value = pIdCoringa1;
     // document.getElementById("imagem2").value = pIdCoringa2;
     document.getElementById("coringaFrame1").value = pIdCoringa1;
     document.getElementById("coringaFrame2").value = pIdCoringa2;
+    document.getElementById("coringaFrame3").value = pIdCoringa3;
 
     ResetaCoringas();
     atualizaIndicadorMult();
@@ -198,8 +220,10 @@ function SortCoringas() {
 function AtualizaInfosConringas(){   
     document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
     document.getElementById("InforNomeCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Nome;
+    document.getElementById("InforNomeCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Nome;
     document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Descricao;
-    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Descricao;   
+    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Descricao;  
+    document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Descricao; 
 }
 
 function AtualizaTopDaMesa(){

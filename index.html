@@ -81,6 +81,19 @@
             <span class="indicadorMult" id = "indicadorMult2">0</span>
         </div>
     </div>
+    <div class="section"> 
+        <div class="card" id="coringaFrame3" onclick="addPontos(this)">
+            <div class="card-name" id="InforNomeCoringa3">
+                <label class="InforNomeCoringa" id="InforNomeCoringa3"></label>
+            </div>   
+            <img id="imagem3" src="placeholder.jpg" alt="Imagem 3" class="visible"> 
+            <div class="card-description">
+                <label class="card-description" id="InforCoringa3"></label>
+            </div>
+            <span class="contadorSpan" id = "contadorSpan3">0</span>
+            <span class="indicadorMult" id = "indicadorMult3">0</span>
+        </div>
+    </div>
 
     <!-------- Pontos ---------->
     <div class="calculator-section">
@@ -116,6 +129,7 @@
 var jogador1Selecionado =true;
 var pIdCoringa1 = 0;
 var pIdCoringa2 = 0;
+var pIdCoringa3 = 0;
 
 //Coringas
 let arrayOfCoringa = [
