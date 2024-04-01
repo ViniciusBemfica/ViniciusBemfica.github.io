@@ -530,13 +530,10 @@ function ExibeCookie(){
 
     var {maiorPontuacao, vTotalLinhasMesa, vTotalLinhas, vMaiorPontuacaoGeral} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
 
-    vMelhorDaMesa = "----- Melhores da Mesa ----- " + '\n' +
-                        "C1: " + arrayOfCoringa[pIdCoringa1].Descricao  + '\n' +
-                        "C2: " + arrayOfCoringa[pIdCoringa2].Descricao  + '\n' +
-                        "Maior Pontuação: " + maiorPontuacao + '\n' +
-                        "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
-                        "Maior Pontuação Geral: " + vMaiorPontuacaoGeral + '\n' +
-                        "Total Mesas Jogadas: " + vTotalLinhas;
+    vMelhorDaMesa = "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
+                    "Maior Pontuação: " + maiorPontuacao + '\n' +
+                    "Maior Pontuação Geral: " + vMaiorPontuacaoGeral + '\n' +
+                    "Total Mesas Jogadas: " + vTotalLinhas;
 
     alert(vMelhorDaMesa);
 }
