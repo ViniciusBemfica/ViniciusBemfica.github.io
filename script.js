@@ -176,7 +176,9 @@ function atualizaIndicadorMult(){
     indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase;
 }
 
-function SortCoringas() {   
+function SortCoringas() {  
+    setCookie("CookieLog", "Inicio;", 30); 
+     
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
@@ -229,14 +231,14 @@ function AtualizaInfosConringas(){
 function AtualizaTopDaMesa(){
     var vTexto = '';
     var vCookieString = getCookie("CookieLog"); 
-    var {maiorPontuacao, vTotalLinhasMesa} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
+    var {maiorPontuacao, vTotalLinhasMesa} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
     vTexto = 'Top Mesa: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
     document.getElementById("TopDaMesa").textContent = vTexto;
-    
 }
 
 function AtualizaCookie() { 
+       
     var vCookieString = getCookie("CookieLog");   
         
     if (vCookieString != "" && vCookieString !== null) {     
@@ -258,7 +260,7 @@ function setCookie(c_name, value, expiredays) {
 }
 
 function CookieAtualizaLog(pLogAntes){     
-    vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2 + '|';  
+    vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2 + '|C3|' + pIdCoringa3 + '|';  
 
     if (document.getElementById("valorSoma").value > document.getElementById("valorSoma2").value){
         vAdicionarNoLog += 'J1|' + document.getElementById("valorSoma").value;
@@ -276,14 +278,14 @@ function CookieAtualizaLog(pLogAntes){
 function ExibeCookie(){
     var vCookieString = getCookie("CookieLog"); 
 
-    var {maiorPontuacao, vTotalLinhasMesa, vTotalLinhas, vMaiorPontuacaoGeral} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
+    var {maiorPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
-    vMelhorDaMesa = "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
-                    "Maior Pontuação: " + maiorPontuacao + '\n' +
-                    "Maior Pontuação Geral: " + vMaiorPontuacaoGeral + '\n' +
-                    "Total Mesas Jogadas: " + vTotalLinhas;
+    // vMelhorDaMesa = "Mesas Jogadas com esses Coringas: " + vTotalLinhasMesa + '\n' +
+    //                 "Maior Pontuação: " + maiorPontuacao + '\n' +
+    //                 "Maior Pontuação Geral: " + vMaiorPontuacaoGeral + '\n' +
+    //                 "Total Mesas Jogadas: " + vTotalLinhas;
 
-    alert(vMelhorDaMesa);
+    // alert(vMelhorDaMesa);
 }
 
 function PintaEditJogadorSelcionado(pJogador){
@@ -310,7 +312,7 @@ function openFullscreen() {
 }
 
 
-function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2) {
+function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3) {
     // Divide o texto em linhas
     var linhas = vCookieString.split(";");
     var vTotalLinhas = linhas.length;
@@ -318,35 +320,31 @@ function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2) {
 
     // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
     var maiorPontuacao = 0;
-    var vMaiorPontuacaoGeral =0;
 
     // Itera sobre cada linha
-    for (var i = 0; i < linhas.length; i++) {
+    for (var i = 1; i < linhas.length - 1; i++) {
         // Divide a linha em elementos separados
         var elementos = linhas[i].split("|");
 
         // Inicializa as variáveis para armazenar as pontuações dos Coringas e o jogador correspondente
         var pontuacao = 0;
 
-        // Itera sobre os elementos para encontrar as pontuações dos Coringas e o jogador correspondente
         
-        if ((elementos[1] == pIdCoringa1) && (elementos[3] == pIdCoringa2) || (elementos[1] == pIdCoringa2) && (elementos[3] == pIdCoringa1)) {
-            pontuacao = parseInt(elementos[5], 10);
-            vTotalLinhasMesa++;
-        }  
-        
+        if ([elementos[1], elementos[3], elementos[5]].some(el => el == pIdCoringa1)) {
+            if ([elementos[1], elementos[3], elementos[5]].some(el => el == pIdCoringa2)) {
+                if ([elementos[1], elementos[3], elementos[5]].some(el => el == pIdCoringa3)) {
+                    pontuacao = parseInt(elementos[7], 10);
+                    vTotalLinhasMesa++;
+                }
+            }
+        }
+
         // Verifica se há uma pontuação válida para ambos os Coringas
         if (pontuacao > maiorPontuacao) {
             maiorPontuacao = pontuacao;
         } 
-
-        vPontuacaoGeral = parseInt(elementos[5], 10);
-        if (vPontuacaoGeral > vMaiorPontuacaoGeral) {
-            vMaiorPontuacaoGeral = vPontuacaoGeral;
-        } 
     }
 
-    
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
-    return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas, vMaiorPontuacaoGeral: vMaiorPontuacaoGeral};
+    return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas};
 }
