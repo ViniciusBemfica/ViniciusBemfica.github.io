@@ -94,6 +94,9 @@
         height: 7%; 
         color: white;      
     }
+    .pokerHand:has(input[type="radio"]:checked) {
+        border: 1px solid red;
+    }
     .pokerHand input[type="radio"] {
         padding: 0; 
         margin-right: -15px;
