@@ -51,21 +51,27 @@
         width: 65px;
         font-size: 18px;
         font-weight: bold;
+        border-radius: 15px; 
     }
     .button-row {
         display: flex;
+        
     }
+    
     .button-row button {
         margin: 3px;
         padding: 10px;
         font-size: 20px;
         width: 60px;
+        border-radius: 15px; 
     }
    .button-row button.botaoLargo{
        margin: 5px;
         padding: 10px;
         font-size: 25px;
-        width: 100px;       
+        width: 100px;  
+        border-radius: 15px; 
+        font-weight: bold;     
    }
    .button-row button.botaoCookie{
         margin: 5px;
@@ -110,6 +116,7 @@
         flex: 1;
         justify-content: space-between;
         margin-bottom: 20px;
+        
     }
     .contadorSpan {
         position: absolute;
