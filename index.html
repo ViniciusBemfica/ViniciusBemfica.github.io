@@ -13,43 +13,43 @@
     <!-------- Poker Hands ---------->
     <div class="section">
         <label class="pokerHand" for="carta-alta">
-            <input type="radio" id="carta-alta" name="hand" value="1" checked> + 1 - CARTA ALTA
+            <input onclick="CalculaPontuacao()" type="radio" id="carta-alta" name="hand" value="1" checked> + 1 - CARTA ALTA
         </label>
         
         <label class="pokerHand" for="par">
-            <input type="radio" id="par" name="hand" value="2"> + 2 - PAR
+            <input onclick="CalculaPontuacao()" type="radio" id="par" name="hand" value="2"> + 2 - PAR
         </label>
         
         <label class="pokerHand" for="dois-pares">
-            <input type="radio" id="dois-pares" name="hand" value="3"> + 3 - DOIS PARES 
+            <input onclick="CalculaPontuacao()" type="radio" id="dois-pares" name="hand" value="3"> + 3 - DOIS PARES 
         </label>
         
         <label class="pokerHand" for="trinca">
-            <input type="radio" id="trinca" name="hand" value="4"> + 4 - TRINCA 
+            <input onclick="CalculaPontuacao()" type="radio" id="trinca" name="hand" value="4"> + 4 - TRINCA 
         </label>
         
         <label class="pokerHand" for="sequencia">
-            <input type="radio" id="sequencia" name="hand" value="5"> + 5 - SEQUÊNCIA 
+            <input onclick="CalculaPontuacao()" type="radio" id="sequencia" name="hand" value="5"> + 5 - SEQUÊNCIA 
         </label>
         
         <label class="pokerHand" for="flush">
-            <input type="radio" id="flush" name="hand" value="6"> + 6 - FLUSH 
+            <input onclick="CalculaPontuacao()" type="radio" id="flush" name="hand" value="6"> + 6 - FLUSH 
         </label>
         
         <label class="pokerHand" for="full-house">
-            <input type="radio" id="full-house" name="hand" value="7"> + 7 - FULL HOUSE
+            <input onclick="CalculaPontuacao()" type="radio" id="full-house" name="hand" value="7"> + 7 - FULL HOUSE
         </label>
         
         <label class="pokerHand" for="quadra">
-            <input type="radio" id="quadra" name="hand" value="8"> + 8 - QUADRA 
+            <input onclick="CalculaPontuacao()" type="radio" id="quadra" name="hand" value="8"> + 8 - QUADRA 
         </label>
         
         <label class="pokerHand" for="straight-flush">
-            <input type="radio" id="straight-flush" name="hand" value="9"> + 9 - ST. FLUSH
+            <input onclick="CalculaPontuacao()" type="radio" id="straight-flush" name="hand" value="9"> + 9 - ST. FLUSH
         </label>
         
         <label class="pokerHand" for="royal-straight-flush">
-            <input type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL
+            <input onclick="CalculaPontuacao()" type="radio" id="royal-straight-flush" name="hand" value="10"> + 10 - ROYAL
         </label>  
     </div>
 
@@ -116,14 +116,10 @@
 <input type="file" id="selecionarImagemInput3" class="hidden" accept="image/*">
 
 <script>
-var total = 0;
+
 var jogador1Selecionado =true;
-let pasta = '';
 var pIdCoringa1 = 0;
 var pIdCoringa2 = 0;
-var radios = document.querySelectorAll('input[type="radio"][name="hand"]');
-var vPontuacaoLogJ1 = ""; 
-var vPontuacaoLogJ2 = "";
 
 //Coringas
 let arrayOfCoringa = [
@@ -234,12 +230,6 @@ let arrayOfCoringa = [
 ];
 
 window.onload = function() {
-    radios.forEach(function(radio) {
-        radio.onclick = function() {
-            CalculaPontuacao();
-        };
-    });
-
     setJogador(1);
 };
 
@@ -354,6 +344,8 @@ function ResetaCoringas(){
 }
 
 function adicionar() {
+    var total = 0;
+
     if (jogador1Selecionado){
         var entrada = parseFloat(document.getElementById("valorEntrada").value);
     } else {
@@ -373,8 +365,6 @@ function adicionar() {
        
         document.getElementById("valorEntrada").value = "";
         document.getElementById("valorEntrada2").value = "";
-
-        // AdicionaNoLog(jogador1Selecionado, entrada);
 
         ResetaCoringas();
     } else {
@@ -436,7 +426,7 @@ function atualizaIndicadorMult(){
     indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase;
 }
 
-function SortCoringas() {
+function SortCoringas() {   
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
@@ -537,14 +527,6 @@ function ExibeCookie(){
                     "Total Mesas Jogadas: " + vTotalLinhas;
 
     alert(vMelhorDaMesa);
-}
-
-function AdicionaNoLog(pjogador1Selecionado, pPontuacao){
-    if (pjogador1Selecionado){
-        vPontuacaoLogJ1 += pPontuacao + '|';
-    } else {
-        vPontuacaoLogJ2 += pPontuacao + '|';   
-    }   
 }
 
 function PintaEditJogadorSelcionado(pJogador){
