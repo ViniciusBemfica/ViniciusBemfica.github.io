@@ -102,8 +102,7 @@
         </div>
         <br>
         <div class="button-row">
-            <button class="botaoCookie" onclick="AtualizaCookie()">Fim do Jogo</button>
-            <button class="botaoCookie" onclick="ExibeCookie()">Infos</button>       
+            <button class="botaoCookie" onclick="AtualizaCookie()">Fim do Jogo</button>     
         </div>
         <div class="button-row">
             <label id="TopDaMesa" class="TopDaMesa">Top da Mesa: </label>      
@@ -481,11 +480,13 @@ function AtualizaInfosConringas(){
 }
 
 function AtualizaTopDaMesa(){
+    var vTexto = '';
     var vCookieString = getCookie("CookieLog"); 
-    var {maiorPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
+    var {maiorPontuacao, vTotalLinhasMesa} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
 
-    document.getElementById("TopDaMesa").textContent = 'Top da Mesa: ';
-    document.getElementById("TopDaMesa").textContent += maiorPontuacao;
+    vTexto = 'Top da Mesa: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
+    document.getElementById("TopDaMesa").textContent = vTexto;
+    
 }
 
 function AtualizaCookie() { 
