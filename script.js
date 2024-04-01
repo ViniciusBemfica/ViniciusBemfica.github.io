@@ -177,8 +177,6 @@ function atualizaIndicadorMult(){
 }
 
 function SortCoringas() {  
-    setCookie("CookieLog", "Inicio;", 30); 
-     
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
