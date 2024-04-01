@@ -212,7 +212,7 @@ function AtualizaTopDaMesa(){
     var vCookieString = getCookie("CookieLog"); 
     var {maiorPontuacao, vTotalLinhasMesa} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2);
 
-    vTexto = 'Top da Mesa: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
+    vTexto = 'Top Mesa: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
     document.getElementById("TopDaMesa").textContent = vTexto;
     
 }
