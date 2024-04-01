@@ -168,7 +168,7 @@ function SortCoringas() {
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
-    const totalImagens = 12;
+    const totalImagens = arrayOfCoringa.length - 1;
 
     // Lista de índices de imagens disponíveis
     let indicesDisponiveis = Array.from({ length: totalImagens }, (_, i) => i + 1);
