@@ -85,22 +85,25 @@
       color: red; /* cor para ouros e copas */
     }
     .pokerHand {
-        font-size: 12px; 
+        font-size: 15px; 
         font-weight: bold;
         display: flex;
-        border: 1px solid #ccc; /* Adiciona uma borda cinza */
-        padding: 5px; 
+        border: 1px solid black; /* Adiciona uma borda cinza */
+        /* padding: 5px;  */
+        padding-top: 8px;
         width: 85%;   
         height: 7%; 
-        color: white;      
+        background-color: #D3DDDD;     
+        border-radius: 15px; /* Arredondamento aumentado */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
     .pokerHand:has(input[type="radio"]:checked) {
-        border: 1px solid red;
+        border: 3px solid red;
     }
     .pokerHand input[type="radio"] {
-        padding: 0; 
-        margin-right: -15px;
-        margin-top: 0px;
+        appearance: none;
+        width: 0px; 
+        outline: none; 
     }
     .button-container {
         display: flex;
