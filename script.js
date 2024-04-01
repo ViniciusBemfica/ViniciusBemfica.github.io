@@ -17,45 +17,40 @@ function addPontos(pImagem) {
 }
 
 function CalculaPontuacao(){
-    totalCalculo = 1;
+    const vCoringa1 = { valor: arrayOfCoringa[pIdCoringa1].ValorBase, 
+            QtdAtivacoes: arrayOfCoringa[pIdCoringa1].QtdAtivacoes, 
+            operadorEhMult: arrayOfCoringa[pIdCoringa1].EhMult};
+    const vCoringa2 = { valor: arrayOfCoringa[pIdCoringa2].ValorBase, 
+            QtdAtivacoes: arrayOfCoringa[pIdCoringa2].QtdAtivacoes,
+            operadorEhMult: arrayOfCoringa[pIdCoringa2].EhMult};
 
-    totalCalculo = parseFloat(document.querySelector('input[name="hand"]:checked').value);
-        
-    //Dois coringas são de somar
-    if ((arrayOfCoringa[pIdCoringa1].EhMult == false) && (arrayOfCoringa[pIdCoringa2].EhMult == false)){
-        totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-        totalCalculo += arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
-    } 
-    //Primeiro coringa é soma, segundo é mult
-    else if ((arrayOfCoringa[pIdCoringa1].EhMult == false) && (arrayOfCoringa[pIdCoringa2].EhMult == true)){
-        totalCalculo += arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-        if (arrayOfCoringa[pIdCoringa2].QtdAtivacoes > 0){
-            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
-        }
-    }   
-    //Segunda coringa é soma, primeiro é mult
-    else if ((arrayOfCoringa[pIdCoringa2].EhMult == false) && (arrayOfCoringa[pIdCoringa1].EhMult == true)){
-        totalCalculo += arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
-        if (arrayOfCoringa[pIdCoringa1].QtdAtivacoes > 0){
-            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-        }
-    }   
-    //Dois coringas são mult
-    else if ((arrayOfCoringa[pIdCoringa2].EhMult == true) && (arrayOfCoringa[pIdCoringa1].EhMult == true)){
-        if (arrayOfCoringa[pIdCoringa1].QtdAtivacoes > 0){
-            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa1].ValorBase * arrayOfCoringa[pIdCoringa1].QtdAtivacoes;
-        }
+    const vCoringas = [vCoringa1, vCoringa2];
 
-        if (arrayOfCoringa[pIdCoringa2].QtdAtivacoes > 0){
-            totalCalculo = totalCalculo * arrayOfCoringa[pIdCoringa2].ValorBase * arrayOfCoringa[pIdCoringa2].QtdAtivacoes;
-        }
-    }  
+    var vTotal = parseFloat(document.querySelector('input[name="hand"]:checked').value);
+
+    vCoringas.sort((a, b) => {
+    if (a.operadorEhMult == b.operadorEhMult) {
+        return 0;
+    } else if (a.operadorEhMult) {
+        return 1;
+    } else {
+        return -1;
+    }
+    });
+
+    vCoringas.forEach(vCoringa => {
+    if (vCoringa.operadorEhMult){
+        vTotal *= vCoringa.valor * vCoringa.QtdAtivacoes;
+    } else {
+        vTotal += vCoringa.valor * vCoringa.QtdAtivacoes;          
+    }
+    }); 
 
 
     if(jogador1Selecionado) {
-        document.getElementById("valorEntrada").value = totalCalculo;
+        document.getElementById("valorEntrada").value = vTotal;
     } else {
-        document.getElementById("valorEntrada2").value = totalCalculo;
+        document.getElementById("valorEntrada2").value = vTotal;
     }  
 }
 
