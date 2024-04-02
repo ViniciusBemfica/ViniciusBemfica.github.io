@@ -391,3 +391,18 @@ function setaCoringas(){
 
     SortCoringas(pIdCoringa1, pIdCoringa2, pIdCoringa3);
 }
+
+function openModal() {
+    var pasta = 'https://viniciusbemfica.github.io/Cartas/';
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("modalImg");
+    var imgSrc = 'https://viniciusbemfica.github.io/PokerHands.jpg'; // Replace "your_image_url.jpg" with the URL of your image
+    modal.style.display = "block";
+    modalImg.src = imgSrc;
+  }
+  
+  function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
+  

@@ -44,7 +44,7 @@
             <input onclick="CalculaPontuacao()" type="radio" name="hand" value="8"> + 8 - QUADRA 
         </label>
         
-        <label class="pokerHand">
+        <label class="pokerHand" ondblclick="openModal()">
             <input onclick="CalculaPontuacao()" type="radio" name="hand" value="9"> + 9 - ST. FLUSH
         </label>
         
@@ -129,6 +129,11 @@
     <input type="text" id="edit3" class="edit" placeholder="Corringa 3">
     <button id="buttonSelCoringas" onclick="setaCoringas()">OK</button>
     </div>
+
+    <div id="myModal" class="modal">
+        <span onclick="closeModal()" class="close">&times;</span>
+        <img id="modalImg" class="modal-content" src="" alt="Modal Image">
+      </div>
 </div>
 
 <script src="script.js"></script>
