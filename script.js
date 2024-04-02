@@ -176,7 +176,7 @@ function atualizaIndicadorMult(){
     indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase;
 }
 
-function SortCoringas() {  
+function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {  
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
 
     // Número total de imagens disponíveis na pasta
@@ -186,18 +186,24 @@ function SortCoringas() {
     let indicesDisponiveis = Array.from({ length: totalImagens }, (_, i) => i + 1);
 
     // Gerar dois números aleatórios entre 1 e o total de imagens
-    const random1 = getRandomIndex(indicesDisponiveis);
-    const random2 = getRandomIndex(indicesDisponiveis);
-    const random3 = getRandomIndex(indicesDisponiveis);
+    var random1 = getRandomIndex(indicesDisponiveis);
+    var random2 = getRandomIndex(indicesDisponiveis);
+    var random3 = getRandomIndex(indicesDisponiveis);
+
+    if (pCoringa1 !== ''){
+        random1 = pCoringa1;   
+        random2 = pCoringa2;  
+        random3 = pCoringa3;   
+    }
 
     pIdCoringa1 = random1;
     pIdCoringa2 = random2;
-    pIdCoringa3= random3;
+    pIdCoringa3 = random3;
 
     // Criar o caminho para as imagens aleatórias
-    const caminhoImagem1 = `${pasta}${random1}.jpg`;
-    const caminhoImagem2 = `${pasta}${random2}.jpg`;
-    const caminhoImagem3 = `${pasta}${random3}.jpg`;
+    const caminhoImagem1 = `${pasta}${pIdCoringa1}.jpg`;
+    const caminhoImagem2 = `${pasta}${pIdCoringa2}.jpg`;
+    const caminhoImagem3 = `${pasta}${pIdCoringa3}.jpg`;
 
     // Atualizar as imagens no HTML
     document.getElementById('imagem1').src = caminhoImagem1;
@@ -362,4 +368,26 @@ function escondeCoringa(pSection){
     }
     
     pSection.style.display = "none";
+}
+
+function InfoCoringas(){
+    alert('Coringa 1: ' + pIdCoringa1 + '\nCoringa 2: ' + pIdCoringa2 + '\nCoringa 3: ' + pIdCoringa3);
+}
+
+function openBox() {
+    var box = document.getElementById("box");
+    box.style.display = "block";
+}
+  
+function closeBox() {
+var box = document.getElementById("box");
+box.style.display = "none";
+}
+
+function setaCoringas(){
+    pIdCoringa1 = document.getElementById('edit1').value;
+    pIdCoringa2 = document.getElementById('edit2').value;
+    pIdCoringa3 = document.getElementById('edit3').value;
+
+    SortCoringas(pIdCoringa1, pIdCoringa2, pIdCoringa3);
 }

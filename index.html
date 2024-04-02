@@ -12,7 +12,7 @@
 <div class="container" ondblclick="openFullscreen()">
     <!-------- Poker Hands ---------->
     <div class="section radio">
-        <label class="pokerHand">
+        <label class="pokerHand" ondblclick="InfoCoringas()">
             <input onclick="CalculaPontuacao()" type="radio" name="hand" value="1" checked> + 1 - CARTA ALTA
         </label>
         
@@ -48,7 +48,7 @@
             <input onclick="CalculaPontuacao()" type="radio" name="hand" value="9"> + 9 - ST. FLUSH
         </label>
         
-        <label class="pokerHand">
+        <label class="pokerHand" ondblclick="openBox()">
             <input onclick="CalculaPontuacao()" type="radio" name="hand" value="10"> + 10 - ROYAL
         </label>  
     </div>
@@ -98,7 +98,7 @@
     <!-------- Pontos ---------->
     <div class="calculator-section">
         <div class="button-row">
-            <button class="botaoLargo" onclick="SortCoringas()">🎲 🃏</button>             
+            <button class="botaoLargo" onclick="SortCoringas('', '', '')">🎲 🃏</button>             
         </div>
         <br>
         <div class="button-row">
@@ -120,6 +120,14 @@
         <div class="button-row">
             <label id="TopDaMesa" class="TopDaMesa">Top da Mesa: </label>      
         </div>
+    </div>
+
+    <div id="box" class="box">
+    <span onclick="closeBox()" class="close">&times;</span>
+    <input type="text" id="edit1" class="edit" placeholder="Corringa 1">
+    <input type="text" id="edit2" class="edit" placeholder="Corringa 2">
+    <input type="text" id="edit3" class="edit" placeholder="Corringa 3">
+    <button id="buttonSelCoringas" onclick="setaCoringas()">OK</button>
     </div>
 </div>
 
