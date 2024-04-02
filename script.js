@@ -232,7 +232,7 @@ function AtualizaTopDaMesa(){
     console.log(vCookieString)
     var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
-    vTexto = '🏆: ' + maiorPontuacao + ' / Ult.: ' + vUltimaPontuacao + ' / Jogos: ' + vTotalLinhasMesa ;
+    vTexto = '🏆: ' + maiorPontuacao + ' / Ult.: ' + vUltimaPontuacao + ' / J: ' + vTotalLinhasMesa ;
     document.getElementById("TopDaMesa").textContent = vTexto;
 }
 
