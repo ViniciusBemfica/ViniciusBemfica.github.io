@@ -235,7 +235,7 @@ function AtualizaInfosConringas(){
 function AtualizaTopDaMesa(){
     var vTexto = '';
     var vCookieString = getCookie("CookieLog"); 
-    console.log(vCookieString)
+    
     var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
     vTexto = '🏆: ' + maiorPontuacao + ' / Ult.: ' + vUltimaPontuacao + ' / J: ' + vTotalLinhasMesa ;
