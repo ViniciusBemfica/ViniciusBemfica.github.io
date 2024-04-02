@@ -209,7 +209,8 @@
       .close {
         color: #aaa;
         float: right;
-        font-size: 28px;
+        margin-right: 30px;
+        font-size: 50px;
         font-weight: bold;
       }
       
@@ -251,9 +252,9 @@
       .closeModal {
         color: #aaa;
         float: right;
-        font-size: 28px;
+        font-size: 100px;
         font-weight: bold;
-        margin-right: 10px;
+        margin-right: 50px;
       }
       
       .closeModal:hover,
