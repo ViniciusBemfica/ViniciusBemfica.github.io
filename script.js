@@ -386,6 +386,8 @@ function setaCoringas(){
     pIdCoringa3 = document.getElementById('edit3').value;
 
     SortCoringas(pIdCoringa1, pIdCoringa2, pIdCoringa3);
+
+    closeBox();
 }
 
 function openModal() {
