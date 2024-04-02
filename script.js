@@ -231,11 +231,17 @@ function AtualizaTopDaMesa(){
     var vCookieString = getCookie("CookieLog"); 
     var {maiorPontuacao, vTotalLinhasMesa} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
-    vTexto = 'Top Mesa: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
+    vTexto = '🏆: ' + maiorPontuacao + ' / Jogos: ' + vTotalLinhasMesa;
     document.getElementById("TopDaMesa").textContent = vTexto;
 }
 
 function AtualizaCookie() { 
+
+    var resposta = confirm("O Jogo finalizou e deseja guardar a pontuação no Log?");
+    
+    if (!resposta) {
+        return;
+    }
        
     var vCookieString = getCookie("CookieLog");   
         
@@ -345,4 +351,14 @@ function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdC
 
     // Retorna um objeto contendo a maior pontuação e o jogador correspondente
     return {maiorPontuacao: maiorPontuacao, vTotalLinhasMesa: vTotalLinhasMesa, vTotalLinhas: vTotalLinhas};
+}
+
+function escondeCoringa(pSection){
+    var resposta = confirm("Deseja esconder esse coringa?");
+    
+    if (!resposta) {
+        return;
+    }
+    
+    pSection.style.display = "none";
 }
