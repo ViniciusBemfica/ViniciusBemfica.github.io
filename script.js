@@ -227,9 +227,9 @@ function AtualizaInfosConringas(){
     document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
     document.getElementById("InforNomeCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Nome;
     document.getElementById("InforNomeCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Nome;
-    document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Descricao;
-    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Descricao;  
-    document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Descricao; 
+    document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Id + ' - ' + arrayOfCoringa[pIdCoringa1].Descricao;
+    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Id + ' - ' + arrayOfCoringa[pIdCoringa2].Descricao;  
+    document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Id + ' - ' + arrayOfCoringa[pIdCoringa3].Descricao; 
 }
 
 function AtualizaTopDaMesa(){
@@ -368,10 +368,6 @@ function escondeCoringa(pSection){
     }
     
     pSection.style.display = "none";
-}
-
-function InfoCoringas(){
-    alert('Coringa 1: ' + pIdCoringa1 + '\nCoringa 2: ' + pIdCoringa2 + '\nCoringa 3: ' + pIdCoringa3);
 }
 
 function openBox() {
