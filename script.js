@@ -216,6 +216,10 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     document.getElementById("coringaFrame2").value = pIdCoringa2;
     document.getElementById("coringaFrame3").value = pIdCoringa3;
 
+    document.getElementById("coringaFrame1").style.backgroundColor = arrayOfCoringa[pIdCoringa1].Tipo;
+    document.getElementById("coringaFrame2").style.backgroundColor = arrayOfCoringa[pIdCoringa2].Tipo;
+    document.getElementById("coringaFrame3").style.backgroundColor = arrayOfCoringa[pIdCoringa3].Tipo;
+
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 

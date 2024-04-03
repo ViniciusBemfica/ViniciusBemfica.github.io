@@ -143,6 +143,7 @@ var jogador1Selecionado =true;
 var pIdCoringa1 = 0;
 var pIdCoringa2 = 0;
 var pIdCoringa3 = 0;
+var vTiposCoringa = ["#b5c5e7", "#e8eca4", "#debfe2"]; //"Soma", "Mult", "Poder" azul claro b5c5e7 amarelo e8eca4 roxo debfe2
 
 //Coringas
 let arrayOfCoringa = [
@@ -152,7 +153,8 @@ let arrayOfCoringa = [
         Descricao: "Dummy",
         EhMult: false,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 1,
@@ -160,7 +162,8 @@ let arrayOfCoringa = [
         Descricao: "Cada Ouro +2",
         EhMult: false,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 2,
@@ -168,7 +171,8 @@ let arrayOfCoringa = [
         Descricao: "Depois de 3 ou mais descartes, x2",
         EhMult: true,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[1]
     },
     {
         Id: 3,
@@ -176,7 +180,8 @@ let arrayOfCoringa = [
         Descricao: "Cada As +5",
         EhMult: false,
         ValorBase: 5,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 4,
@@ -184,7 +189,8 @@ let arrayOfCoringa = [
         Descricao: "Cada carta de Face +2 (J, Q e K)",
         EhMult: false,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 5,
@@ -192,7 +198,8 @@ let arrayOfCoringa = [
         Descricao: "Straight e straight flush x2",
         EhMult: true,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[1]
     },
     {
         Id: 6,
@@ -200,7 +207,8 @@ let arrayOfCoringa = [
         Descricao: "Cada Par +3. Vale par dentro de Trica, F. House, etc.",
         EhMult: false,
         ValorBase: 3,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 7,
@@ -208,7 +216,8 @@ let arrayOfCoringa = [
         Descricao: "Cada carta Ímpar +2 (2, 4, 5, 8 e 10).",
         EhMult: false,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 8,
@@ -216,7 +225,8 @@ let arrayOfCoringa = [
         Descricao: "Cada carta Par +2 (2, 4, 5, 8 e 10)",
         EhMult: false,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[0]
     },
     {
         Id: 9,
@@ -224,7 +234,8 @@ let arrayOfCoringa = [
         Descricao: "Permite Straight e straight flush com 1 ou mais furos de 1 (ex: 13456)",
         EhMult: false,
         ValorBase: 0,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[2]
     },
     {
         Id: 10,
@@ -232,7 +243,8 @@ let arrayOfCoringa = [
         Descricao: "Jogar exatamente 4 cartas x2. Não precisa pontuar com tudo. Pontos são da mão feita.",
         EhMult: true,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[1]
     },
     {
         Id: 11,
@@ -240,7 +252,8 @@ let arrayOfCoringa = [
         Descricao: "Jogar pelo menos 4 naipes diferentes x2. Não precisa pontuar com tudo. Pontos são da mão feita.",
         EhMult: true,
         ValorBase: 2,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[1]
     },
     {
         Id: 12,
@@ -248,7 +261,8 @@ let arrayOfCoringa = [
         Descricao: "Tudo vermelho é ouro (Ouro e Copas)",
         EhMult: false,
         ValorBase: 0,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[2]
     },
     {
         Id: 13,
@@ -256,7 +270,8 @@ let arrayOfCoringa = [
         Descricao: "Nomeie uma carta, naipe ou rank. Revele cartas do baralho até achar o nomeado. Descarte as reveladas.",
         EhMult: false,
         ValorBase: 0,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[2]
     },
     {
         Id: 14,
@@ -264,7 +279,8 @@ let arrayOfCoringa = [
         Descricao: "Escolha uma carta entre os seus descartes e coloque na sua mão. 1x por partida.",
         EhMult: false,
         ValorBase: 0,
-        QtdAtivacoes: 0
+        QtdAtivacoes: 0,
+        Tipo: vTiposCoringa[2]
     }
 ];
 
