@@ -157,7 +157,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult1.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa1].ValorBase + "❂";
+    indicadorMult1.textContent = pOperacao + arrayOfCoringa[pIdCoringa1].ValorBase + "❂";
 
     indicadorMult2 = document.getElementById('indicadorMult2');
     if (arrayOfCoringa[pIdCoringa2].EhMult) {
@@ -165,7 +165,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase + "❂";
+    indicadorMult2.textContent = pOperacao + arrayOfCoringa[pIdCoringa2].ValorBase + "❂";
 
     indicadorMult3 = document.getElementById('indicadorMult3');
     if (arrayOfCoringa[pIdCoringa3].EhMult) {
@@ -173,7 +173,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase + "❂";
+    indicadorMult3.textContent = pOperacao + arrayOfCoringa[pIdCoringa3].ValorBase + "❂";
 }
 
 function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {  
