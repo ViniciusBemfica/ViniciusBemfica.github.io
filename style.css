@@ -123,22 +123,22 @@
     }
     .contadorSpan {
         position: absolute;
-        bottom: 25px;
-        left: 8px;
+        bottom: 28px;
+        left: 10px;
         background-color: rgba(168, 168, 168, 0.596);
         color: #fc0000;
         padding-right: 10px;
         padding-left: 10px;
-        padding-top: 5px;
+        padding-top: 3px;
         border-radius: 15px;
         font-family: Arial, sans-serif;
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
     }
     .indicadorMult {
         position: absolute;
-        bottom: 25px;
-        right: 15px;
+        bottom: 28px;
+        right: 17px;
         background-color: rgba(168, 168, 168, 0.596);
         color: rgba(0, 0, 0, 0.7);
         padding-right: 5px;
@@ -146,7 +146,7 @@
         border-radius: 15px;
         /* border-radius: 50%; */
         font-family: Arial, sans-serif;
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold;
     }
     .EditJogadorSelcionado{
