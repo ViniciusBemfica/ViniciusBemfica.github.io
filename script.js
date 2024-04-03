@@ -302,11 +302,11 @@ function CookieAtualizaLog(pLogAntes){
     vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2 + '|C3|' + pIdCoringa3 + '|';  
 
     if (document.getElementById("valorSoma").value > document.getElementById("valorSoma2").value){
-        vAdicionarNoLog += 'J1|' + document.getElementById("valorSoma").value;
-    } else if (document.getElementById("valorSoma2").value > document.getElementById("valorSoma").value) {
-        vAdicionarNoLog += 'J2|' + document.getElementById("valorSoma2").value;       
+        vAdicionarNoLog += 'J1|' + document.getElementById("valorSoma").value.substring(2);
+    } else if (document.getElementById("valorSoma2").value.substring(2) > document.getElementById("valorSoma").value.substring(2)) {
+        vAdicionarNoLog += 'J2|' + document.getElementById("valorSoma2").value.substring(2);       
     } else {
-        vAdicionarNoLog += 'EMP|' + document.getElementById("valorSoma").value;    
+        vAdicionarNoLog += 'EMP|' + document.getElementById("valorSoma").value.substring(2);    
     }
 
     vLogNovo = pLogAntes + vAdicionarNoLog + ';';
