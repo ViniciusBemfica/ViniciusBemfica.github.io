@@ -80,9 +80,9 @@ function excluir (){
     ResetaCoringas();
 
   if(jogador1Selecionado) {
-    document.getElementById("valorSoma").value = 0;
+    document.getElementById("valorSoma").value = '❂ ' + 0;
    } else {
-       document.getElementById("valorSoma2").value = 0;
+       document.getElementById("valorSoma2").value = '❂ ' + 0;
    }
 }
 
@@ -123,13 +123,14 @@ function adicionar() {
     
     if (!isNaN(entrada)) {
         if(jogador1Selecionado){
-            total = parseFloat(document.getElementById("valorSoma").value);
-        total = total + entrada;
-            document.getElementById("valorSoma").value = total;
-        } else {
-            total = parseFloat(document.getElementById("valorSoma2").value);
+            total = parseFloat(document.getElementById("valorSoma").value.substring(2));
             total = total + entrada;
-            document.getElementById("valorSoma2").value = total;
+            document.getElementById("valorSoma").value = "❂ " + total;
+        } else {
+            total = parseFloat(document.getElementById("valorSoma2").value.substring(2));
+            alert(total)
+            total = total + entrada;
+            document.getElementById("valorSoma2").value = "❂ " + total;
         }
        
         document.getElementById("valorEntrada").value = "";
@@ -157,7 +158,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult1.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa1].ValorBase;
+    indicadorMult1.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa1].ValorBase + "❂";
 
     indicadorMult2 = document.getElementById('indicadorMult2');
     if (arrayOfCoringa[pIdCoringa2].EhMult) {
@@ -165,7 +166,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase;
+    indicadorMult2.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa2].ValorBase + "❂";
 
     indicadorMult3 = document.getElementById('indicadorMult3');
     if (arrayOfCoringa[pIdCoringa3].EhMult) {
@@ -173,7 +174,7 @@ function atualizaIndicadorMult(){
     } else {
         pOperacao = "+";    
     }
-    indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase;
+    indicadorMult3.textContent = pOperacao + " " + arrayOfCoringa[pIdCoringa3].ValorBase + "❂";
 }
 
 function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {  
