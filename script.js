@@ -128,7 +128,6 @@ function adicionar() {
             document.getElementById("valorSoma").value = "❂ " + total;
         } else {
             total = parseFloat(document.getElementById("valorSoma2").value.substring(2));
-            alert(total)
             total = total + entrada;
             document.getElementById("valorSoma2").value = "❂ " + total;
         }
