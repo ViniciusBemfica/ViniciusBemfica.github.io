@@ -123,7 +123,7 @@
     }
     .contadorSpan {
         position: absolute;
-        bottom: 28px;
+        bottom: 29px;
         left: 10px;
         background-color: rgba(168, 168, 168, 0.596);
         color: #fc0000;
@@ -137,7 +137,7 @@
     }
     .indicadorMult {
         position: absolute;
-        bottom: 28px;
+        bottom: 29px;
         right: 17px;
         background-color: rgba(168, 168, 168, 0.596);
         color: rgba(0, 0, 0, 0.7);
