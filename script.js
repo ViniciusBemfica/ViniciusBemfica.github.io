@@ -54,9 +54,9 @@ function CalculaPontuacao(){
     }); 
 
     if(jogador1Selecionado) {
-        document.getElementById("valorEntrada").value = vTotal;
+        document.getElementById("valorEntrada").value = "+" + vTotal;
     } else {
-        document.getElementById("valorEntrada2").value = vTotal;
+        document.getElementById("valorEntrada2").value = "+" + vTotal;
     }  
 }
 
