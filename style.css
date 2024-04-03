@@ -188,9 +188,18 @@
         font-weight: bold;
     }
     .card-description {
+        background-color: #E0E7ED;
+        border: 1px solid #000000;
+        border-radius: 12px;
         font-size: 14px;
-        padding-top: 8px;
+        margin-top: 8px;
     }
+    .card-text-box{
+        /* height: 50%; */
+        padding: 6px; 
+        height: 100px;
+    }
+    
 
     .box {
         display: none;
