@@ -192,8 +192,9 @@
         border: 1px solid #000000;
         border-radius: 12px;
         font-size: 12px;
-        margin: -5px;
-        margin-top: 7px;
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-top: 5px;
         
     }
     .card-text-box{
