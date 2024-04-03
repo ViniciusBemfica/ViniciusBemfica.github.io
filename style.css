@@ -191,7 +191,7 @@
         background-color: #E0E7ED;
         border: 1px solid #000000;
         border-radius: 12px;
-        font-size: 13px;
+        font-size: 12px;
         margin: -5px;
         margin-top: 7px;
         
@@ -199,7 +199,7 @@
     .card-text-box{
         /* height: 50%; */
         padding: 6px; 
-        height: 110px;
+        height: 120px;
     }
     
 
