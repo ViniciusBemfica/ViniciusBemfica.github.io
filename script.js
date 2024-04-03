@@ -225,6 +225,30 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     atualizaContador(); 
     AtualizaTopDaMesa();
     AtualizaInfosConringas();   
+    EscondeIndicadorCoringaPoder();
+}
+
+
+function EscondeIndicadorCoringaPoder(){
+    document.getElementById('indicadorMult1').style.display = "block";
+    document.getElementById('contadorSpan1').style.display = "block";
+    document.getElementById('indicadorMult2').style.display = "block";
+    document.getElementById('contadorSpan2').style.display = "block";
+    document.getElementById('indicadorMult3').style.display = "block";
+    document.getElementById('contadorSpan3').style.display = "block";
+
+    if (arrayOfCoringa[pIdCoringa1].Tipo == vTiposCoringa.Poder){
+        document.getElementById('indicadorMult1').style.display = "none";    
+        document.getElementById('contadorSpan1').style.display = "none"; 
+    }    
+    if (arrayOfCoringa[pIdCoringa2].Tipo == vTiposCoringa.Poder){
+        document.getElementById('indicadorMult2').style.display = "none";    
+        document.getElementById('contadorSpan2').style.display = "none"; 
+    }  
+    if (arrayOfCoringa[pIdCoringa3].Tipo == vTiposCoringa.Poder){
+        document.getElementById('indicadorMult3').style.display = "none";    
+        document.getElementById('contadorSpan3').style.display = "none"; 
+    }  
 }
 
 function AtualizaInfosConringas(){   

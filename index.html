@@ -143,7 +143,7 @@ var jogador1Selecionado =true;
 var pIdCoringa1 = 0;
 var pIdCoringa2 = 0;
 var pIdCoringa3 = 0;
-var vTiposCoringa = ["#b5c5e7", "#e8eca4", "#debfe2"]; //"Soma", "Mult", "Poder" azul claro b5c5e7 amarelo e8eca4 roxo debfe2
+var vTiposCoringa = {Soma:"#b5c5e7", Mult:"#e8eca4", Poder:"#debfe2"}
 
 //Coringas
 let arrayOfCoringa = [
@@ -154,7 +154,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 1,
@@ -163,7 +163,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 2,
@@ -172,7 +172,7 @@ let arrayOfCoringa = [
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[1]
+        Tipo: vTiposCoringa.Mult
     },
     {
         Id: 3,
@@ -181,7 +181,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 5,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 4,
@@ -190,7 +190,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 5,
@@ -199,7 +199,7 @@ let arrayOfCoringa = [
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[1]
+        Tipo: vTiposCoringa.Mult
     },
     {
         Id: 6,
@@ -208,7 +208,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 3,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 7,
@@ -217,7 +217,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 8,
@@ -226,7 +226,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[0]
+        Tipo: vTiposCoringa.Soma
     },
     {
         Id: 9,
@@ -235,7 +235,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[2]
+        Tipo: vTiposCoringa.Poder
     },
     {
         Id: 10,
@@ -244,7 +244,7 @@ let arrayOfCoringa = [
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[1]
+        Tipo: vTiposCoringa.Mult
     },
     {
         Id: 11,
@@ -253,7 +253,7 @@ let arrayOfCoringa = [
         EhMult: true,
         ValorBase: 2,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[1]
+        Tipo: vTiposCoringa.Mult
     },
     {
         Id: 12,
@@ -262,7 +262,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[2]
+        Tipo: vTiposCoringa.Poder
     },
     {
         Id: 13,
@@ -271,7 +271,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[2]
+        Tipo: vTiposCoringa.Poder
     },
     {
         Id: 14,
@@ -280,7 +280,7 @@ let arrayOfCoringa = [
         EhMult: false,
         ValorBase: 0,
         QtdAtivacoes: 0,
-        Tipo: vTiposCoringa[2]
+        Tipo: vTiposCoringa.Poder
     }
 ];
 
