@@ -367,6 +367,7 @@ function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdC
     var linhas = vCookieString.split(";");
     var vTotalLinhas = linhas.length;
     var vTotalLinhasMesa = 0;
+    var vUltimaPontuacao = 0;
 
     // Inicializa a variável para armazenar a maior pontuação e o jogador correspondente
     var maiorPontuacao = 0;
