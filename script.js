@@ -435,4 +435,7 @@ function openModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
   }
-  
+
+$('container').on("dblclick", function(event){
+    event.stopPropagation();
+});
