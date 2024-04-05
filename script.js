@@ -238,7 +238,6 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Id + ' - ' + arrayOfCoringa[pIdCoringa3].Descricao;
 }
 
-
 function EscondeIndicadorCoringaPoder(){
     document.getElementById('indicadorMult1').style.display = "block";
     document.getElementById('contadorSpan1').style.display = "block";
@@ -351,9 +350,16 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE/Edge */
         elem.msRequestFullscreen();
     }   
-
-    event.stopImmediatePropagation();
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    var vButtonRow = document.querySelectorAll('.button-row');
+    vButtonRow.forEach(function(vButtonRow) {
+        vButtonRow.addEventListener("dblclick", function(event) {
+            event.stopPropagation(); // Stop event propagation
+        });
+    });
+});
 
 
 function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3) {
@@ -436,8 +442,4 @@ function openModal() {
     modal.style.display = "none";
   }
 
-$(document).ready(function() {
-    $('.botaoLargo').on("dblclick", function(event){
-        event.stopPropagation(); // Stop event propagation
-    });
-});
+
