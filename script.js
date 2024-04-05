@@ -437,7 +437,7 @@ function openModal() {
   }
 
 $(document).ready(function() {
-    $('.section').on("dblclick", function(event){
+    $('.botaoLargo').on("dblclick", function(event){
         event.stopPropagation(); // Stop event propagation
     });
 });
