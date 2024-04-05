@@ -176,17 +176,7 @@ function atualizaIndicadorMult(){
     indicadorMult3.textContent = pOperacao + arrayOfCoringa[pIdCoringa3].ValorBase + "❂";
 }
 
-function AtualizaInfosConringas(){   
-    teste = document.getElementById('InforNomeCoringa1');
-    teste.textContent = arrayOfCoringa[pIdCoringa1].Nome;
 
-    // document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
-    document.getElementById("InforNomeCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Nome;
-    document.getElementById("InforNomeCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Nome;
-    document.getElementById("InforCoringa1").innerHTML = arrayOfCoringa[pIdCoringa1].Id + ' - ' + arrayOfCoringa[pIdCoringa1].Descricao;
-    document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Id + ' - ' + arrayOfCoringa[pIdCoringa2].Descricao;  
-    document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Id + ' - ' + arrayOfCoringa[pIdCoringa3].Descricao; 
-}
 
 function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {  
     pasta = 'https://viniciusbemfica.github.io/Cartas/';
@@ -236,16 +226,14 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     atualizaIndicadorMult();
     atualizaContador(); 
     AtualizaTopDaMesa();
-    AtualizaInfosConringas();   
+ 
     EscondeIndicadorCoringaPoder();
 
-        teste = document.getElementById('InforNomeCoringa1');
-    teste.textContent = arrayOfCoringa[pIdCoringa1].Nome;
 
-    // document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
+    document.getElementById("InforNomeCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Nome;
     document.getElementById("InforNomeCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Nome;
     document.getElementById("InforNomeCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Nome;
-    document.getElementById("InforCoringa1").innerHTML = arrayOfCoringa[pIdCoringa1].Id + ' - ' + arrayOfCoringa[pIdCoringa1].Descricao;
+    document.getElementById("InforCoringa1").textContent = arrayOfCoringa[pIdCoringa1].Id + ' - ' + arrayOfCoringa[pIdCoringa1].Descricao;
     document.getElementById("InforCoringa2").textContent = arrayOfCoringa[pIdCoringa2].Id + ' - ' + arrayOfCoringa[pIdCoringa2].Descricao;  
     document.getElementById("InforCoringa3").textContent = arrayOfCoringa[pIdCoringa3].Id + ' - ' + arrayOfCoringa[pIdCoringa3].Descricao;
 }
