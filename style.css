@@ -94,7 +94,7 @@
       color: red; /* cor para ouros e copas */
     }
     .pokerHand {
-        font-size: 11px; 
+        font-size: 13px; 
         font-weight: bold;
         display: flex;
         border: 1px solid black; /* Adiciona uma borda cinza */
