@@ -295,6 +295,12 @@ let arrayOfCoringa = [
 window.onload = function() {
     setJogador(1);
 };
+
+    $(document).ready(function() {
+    $('.botaoLargo').on("dblclick", function(event){
+        event.stopPropagation(); // Stop event propagation
+    });
+});
 </script>
 
 </body>
