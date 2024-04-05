@@ -436,6 +436,8 @@ function openModal() {
     modal.style.display = "none";
   }
 
-$('container').on("dblclick", function(event){
-    event.stopPropagation();
+$(document).ready(function() {
+    $('.section').on("dblclick", function(event){
+        event.stopPropagation(); // Stop event propagation
+    });
 });
