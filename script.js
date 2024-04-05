@@ -351,6 +351,8 @@ function openFullscreen() {
     } else if (elem.msRequestFullscreen) { /* IE/Edge */
         elem.msRequestFullscreen();
     }   
+
+    event.stopImmediatePropagation();
 }
 
 
