@@ -286,6 +286,7 @@ function AtualizaCookie() {
         vCookieString = CookieAtualizaLog(vCookieString); 
         setCookie("CookieLog", vCookieString, 30);      
     } else { 
+        alert("teste")
         setCookie("CookieLog", "Inicio;", 30); 
     }    
 
