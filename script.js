@@ -265,8 +265,11 @@ function EscondeIndicadorCoringaPoder(){
 function AtualizaTopDaMesa(){
     var vTexto = '';
     var vCookieString = getCookie("CookieLog"); 
+    var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = {maiorPontuacao:0, vTotalLinhasMesa:0, vUltimaPontuacao:0}
     
-    var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
+    if (vCookieString != null){
+        var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
+    }
 
     vTexto = '🏆: ' + maiorPontuacao + ' / Ult.: ' + vUltimaPontuacao + ' / J: ' + vTotalLinhasMesa ;
     document.getElementById("TopDaMesa").textContent = vTexto;
