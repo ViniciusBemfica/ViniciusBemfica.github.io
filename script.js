@@ -447,7 +447,7 @@ function openModal() {
     var imgSrc = `https://viniciusbemfica.github.io/PokerHands.jpg`; // Replace "your_image_url.jpg" with the URL of your image
     modal.style.display = "block";
     modalImg.src = imgSrc;
-  }
+}
   
   function closeModal() {
     var modal = document.getElementById("myModal");
@@ -455,3 +455,37 @@ function openModal() {
   }
 
 
+function exibirImagem() {
+    
+   
+    // Verifica se a área de transferência contém uma imagem
+    if (!navigator.clipboard) {
+    alert("Seu navegador não suporta a API da área de transferência.");
+    return;
+    }
+    
+    navigator.clipboard.read().then(data => {
+    // Verifica se a área de transferência contém dados de imagem
+    for (const item of data) {
+        if (item.types.includes('image/png') || item.types.includes('image/jpeg')) {
+        item.getType('image/png').then(blob => {
+            const imgUrl = URL.createObjectURL(blob);
+            const imgElement = document.createElement('img');
+            imgElement.src = imgUrl;
+
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
+            document.getElementById('modalImg').src = imgUrl;
+
+            
+        }).catch(error => {
+            console.error('Erro ao ler imagem da área de transferência:', error);
+        });
+        break; // Para após encontrar a primeira imagem
+        }
+    }
+    }).catch(error => {
+    console.error('Erro ao ler dados da área de transferência:', error);
+    });
+}
