@@ -421,6 +421,9 @@ function escondeCoringa(pSection){
 function openBox() {
     var box = document.getElementById("box");
     box.style.display = "block";
+
+    document.getElementById('valorEntrada').readOnly = !document.getElementById('valorEntrada').readOnly;
+    document.getElementById('valorEntrada2').readOnly = !document.getElementById('valorEntrada2').readOnly;
 }
   
 function closeBox() {
