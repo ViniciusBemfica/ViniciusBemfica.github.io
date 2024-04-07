@@ -222,6 +222,10 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     document.getElementById("coringaFrame2").style.backgroundColor = arrayOfCoringa[pIdCoringa2].Tipo;
     document.getElementById("coringaFrame3").style.backgroundColor = arrayOfCoringa[pIdCoringa3].Tipo;
 
+    document.getElementById("editCoringa1").setAttribute("placeholder", pIdCoringa1);
+    document.getElementById("editCoringa2").setAttribute("placeholder", pIdCoringa2);
+    document.getElementById("editCoringa3").setAttribute("placeholder", pIdCoringa3);
+
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 
@@ -425,9 +429,9 @@ box.style.display = "none";
 }
 
 function setaCoringas(){
-    pIdCoringa1 = document.getElementById('edit1').value;
-    pIdCoringa2 = document.getElementById('edit2').value;
-    pIdCoringa3 = document.getElementById('edit3').value;
+    pIdCoringa1 = document.getElementById('editCoringa1').value;
+    pIdCoringa2 = document.getElementById('editCoringa1').value;
+    pIdCoringa3 = document.getElementById('editCoringa1').value;
 
     SortCoringas(pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
