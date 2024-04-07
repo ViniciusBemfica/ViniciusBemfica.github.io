@@ -229,7 +229,7 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 
-    AtualizaTopDaMesa();
+    // AtualizaTopDaMesa();
  
     EscondeIndicadorCoringaPoder();
 
@@ -297,7 +297,7 @@ function AtualizaCookie() {
         setCookie("CookieLog", "Inicio;", 30); 
     }    
 
-    AtualizaTopDaMesa();
+    // AtualizaTopDaMesa();
 } 
 
 function getCookie(c_name) {
@@ -455,9 +455,7 @@ function openModal() {
   }
 
 
-function exibirImagem() {
-    
-   
+function exibirImagemClipboard() {   
     // Verifica se a área de transferência contém uma imagem
     if (!navigator.clipboard) {
     alert("Seu navegador não suporta a API da área de transferência.");
@@ -477,7 +475,6 @@ function exibirImagem() {
             modal.style.display = "block";
 
             document.getElementById('modalImg').src = imgUrl;
-
             
         }).catch(error => {
             console.error('Erro ao ler imagem da área de transferência:', error);
