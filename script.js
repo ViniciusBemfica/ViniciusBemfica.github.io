@@ -229,7 +229,7 @@ function SortCoringas(pCoringa1, pCoringa2, pCoringa3) {
     ResetaCoringas();
     atualizaIndicadorMult();
     atualizaContador(); 
-    // AtualizaTopDaMesa();
+    AtualizaTopDaMesa();
  
     EscondeIndicadorCoringaPoder();
 
@@ -267,6 +267,7 @@ function EscondeIndicadorCoringaPoder(){
 
 
 function AtualizaTopDaMesa(){
+    var vMaxMesa = '';
     var vTexto = '';
     var vCookieString = getCookie("CookieLog"); 
     var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = {maiorPontuacao:0, vTotalLinhasMesa:0, vUltimaPontuacao:0}
@@ -275,7 +276,9 @@ function AtualizaTopDaMesa(){
         var {maiorPontuacao, vTotalLinhasMesa, vUltimaPontuacao} = MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3);
     }
 
-    vTexto = '🏆: ' + maiorPontuacao + ' / Ult.: ' + vUltimaPontuacao + ' / J: ' + vTotalLinhasMesa ;
+    vMaxMesa = document.getElementById("maxPontosMesa").value;
+
+    vTexto = '🏆: ' + maiorPontuacao + ' / Max: ' + vMaxMesa + ' / J: ' + vTotalLinhasMesa ;
     document.getElementById("TopDaMesa").textContent = vTexto;
 }
 
@@ -297,7 +300,7 @@ function AtualizaCookie() {
         setCookie("CookieLog", "Inicio;", 30); 
     }    
 
-    // AtualizaTopDaMesa();
+    AtualizaTopDaMesa();
 } 
 
 function getCookie(c_name) {
@@ -369,6 +372,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var vButtonRow = document.querySelectorAll('.pokerHand');
+    vButtonRow.forEach(function(vButtonRow) {
+        vButtonRow.addEventListener("dblclick", function(event) {
+            event.stopPropagation(); // Stop event propagation
+        });
+    });
+});
+
 
 function MaiorPontuacaoETotalJogos(vCookieString, pIdCoringa1, pIdCoringa2, pIdCoringa3) {
     // Divide o texto em linhas
@@ -427,8 +439,10 @@ function openBox() {
 }
   
 function closeBox() {
-var box = document.getElementById("box");
-box.style.display = "none";
+    var box = document.getElementById("box");
+    box.style.display = "none";
+
+    AtualizaTopDaMesa();
 }
 
 function setaCoringas(){

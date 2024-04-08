@@ -125,10 +125,10 @@
         <div class="button-row">
             <button class="botaoCookie" onclick="AtualizaCookie()">Fim do Jogo</button>     
         </div>
-        <!-- <div class="button-row">
+        <div class="button-row">
             <label id="TopDaMesa" class="TopDaMesa">Top da Mesa: </label>      
-        </div> -->
-        <button onclick="exibirImagemClipboard()">Exibir Imagem</button> 
+        </div>
+        
     </div>
 
     <div id="box" class="box">
@@ -138,7 +138,10 @@
     <input type="text" id="editCoringa3" class="edit" placeholder="Coringa 3">
     <br>
     <button id="buttonSelCoringas" onclick="setaCoringas()" style="font-size: 18px;">OK</button>
+    <br>
+    <input type="text" id="maxPontosMesa" class="edit" type="number" placeholder="Máximo possível na Mesa">
     </div>
+    
 
     <div id="myModal" class="modal" ondblclick="closeModal()">
         <span onclick="closeModal()" class="close">&times;</span>
