@@ -447,8 +447,8 @@ function closeBox() {
 
 function setaCoringas(){
     pIdCoringa1 = document.getElementById('editCoringa1').value;
-    pIdCoringa2 = document.getElementById('editCoringa1').value;
-    pIdCoringa3 = document.getElementById('editCoringa1').value;
+    pIdCoringa2 = document.getElementById('editCoringa2').value;
+    pIdCoringa3 = document.getElementById('editCoringa3').value;
 
     SortCoringas(pIdCoringa1, pIdCoringa2, pIdCoringa3);
 
