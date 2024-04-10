@@ -312,14 +312,20 @@ function setCookie(c_name, value, expiredays) {
 }
 
 function CookieAtualizaLog(pLogAntes){     
+    var vPontosJ1 = 0;
+    var vPontosJ2 = 0;
+
     vAdicionarNoLog =  '\n' + 'C1|' + pIdCoringa1 + '|C2|' + pIdCoringa2 + '|C3|' + pIdCoringa3 + '|';  
 
-    if (document.getElementById("valorSoma").value > document.getElementById("valorSoma2").value){
-        vAdicionarNoLog += 'J1|' + document.getElementById("valorSoma").value.substring(2);
-    } else if (document.getElementById("valorSoma2").value.substring(2) > document.getElementById("valorSoma").value.substring(2)) {
-        vAdicionarNoLog += 'J2|' + document.getElementById("valorSoma2").value.substring(2);       
+    vPontosJ1 = parseFloat(document.getElementById("valorSoma").value.substring(2));
+    vPontosJ2 = parseFloat(document.getElementById("valorSoma2").value.substring(2));
+
+    if (vPontosJ1> vPontosJ2){
+        vAdicionarNoLog += 'J1|' + vPontosJ1;
+    } else if (vPontosJ2 > vPontosJ1) {
+        vAdicionarNoLog += 'J2|' + vPontosJ2;       
     } else {
-        vAdicionarNoLog += 'EMP|' + document.getElementById("valorSoma").value.substring(2);    
+        vAdicionarNoLog += 'EMP|' + vPontosJ1;    
     }
 
     vLogNovo = pLogAntes + vAdicionarNoLog + ';';
